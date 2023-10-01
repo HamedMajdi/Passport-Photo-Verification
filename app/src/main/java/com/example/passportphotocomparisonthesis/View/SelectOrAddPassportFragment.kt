@@ -1,15 +1,15 @@
-package com.example.passportphotocomparisonthesis
+package com.example.passportphotocomparisonthesis.View
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.example.passportphotocomparisonthesis.R
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CountryViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -22,8 +22,11 @@ class SelectOrAddPassportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_select_or_add_passport, container, false)
     }
+
+
 
 }

@@ -6,17 +6,17 @@
     app:startDestination="@id/selectOrAddPassportFragment">
     <fragment
         android:id="@+id/selectOrAddPassportFragment"
-        android:name="com.example.passportphotocomparisonthesis.SelectOrAddPassportFragment"
+        android:name="com.example.passportphotocomparisonthesis.View.SelectOrAddPassportFragment"
         android:label="@string/label_verify_passport_id_card"
         tools:layout="@layout/fragment_select_or_add_passport" />
     <fragment
         android:id="@+id/modelTestFragment"
-        android:name="com.example.passportphotocomparisonthesis.ModelTestFragment"
+        android:name="com.example.passportphotocomparisonthesis.View.ModelTestFragment"
         android:label="@string/label_test_model_accuracy"
         tools:layout="@layout/fragment_model_test" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.passportphotocomparisonthesis.SettingsFragment"
+        android:name="com.example.passportphotocomparisonthesis.View.SettingsFragment"
         android:label="@string/label_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
