@@ -1,6 +1,5 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
-import org.w3c.dom.DocumentType
 
 data class UserBAC(
     val documentID: String,
