@@ -4,9 +4,24 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
+<!--        <item name="android:textViewStyle">@style/MyTextViewStyle</item>-->
+
     </style>
 
     <style name="Theme.PassportPhotoComparisonThesis" parent="Base.Theme.PassportPhotoComparisonThesis">
 
+    </style>
+
+    <style name="TextViewBold" parent="android:Widget.TextView">
+        <item name="android:textColor">#1B1B1B</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="fontFamily">@font/roboto_black</item>
+    </style>
+
+    <style name="TextViewRegular" parent="android:Widget.TextView">
+        <item name="android:textColor">#2B2B2B</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/allerta</item>
     </style>
 </resources>
