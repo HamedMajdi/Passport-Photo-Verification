@@ -1,6 +1,8 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
+import androidx.room.Entity
 
+@Entity
 data class UserBAC(
     val documentID: String,
     val expirationDate: String,
