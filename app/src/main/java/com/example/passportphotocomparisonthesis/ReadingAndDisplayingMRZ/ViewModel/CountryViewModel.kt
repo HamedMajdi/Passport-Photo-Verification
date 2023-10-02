@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class CountryViewModel() : ViewModel() {
 
-
     private val _country = MutableLiveData<Country>()
     val country: LiveData<Country> get() = _country
 
