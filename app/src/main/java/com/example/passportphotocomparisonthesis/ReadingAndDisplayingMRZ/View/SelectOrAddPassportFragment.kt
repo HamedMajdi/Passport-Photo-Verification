@@ -1,4 +1,4 @@
-package com.example.passportphotocomparisonthesis.View
+package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
 import android.os.Bundle
 import android.util.Log
