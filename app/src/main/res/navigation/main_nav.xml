@@ -8,7 +8,11 @@
         android:id="@+id/selectOrAddPassportFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.SelectOrAddPassportFragment"
         android:label="@string/label_verify_passport_id_card"
-        tools:layout="@layout/fragment_select_or_add_passport" />
+        tools:layout="@layout/fragment_select_or_add_passport" >
+        <action
+            android:id="@+id/action_selectOrAddPassportFragment_to_addDocumentFragment"
+            app:destination="@id/addDocumentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/modelTestFragment"
         android:name="com.example.passportphotocomparisonthesis.View.ModelTestFragment"
@@ -19,4 +23,9 @@
         android:name="com.example.passportphotocomparisonthesis.View.SettingsFragment"
         android:label="@string/label_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/addDocumentFragment"
+        android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddDocumentFragment"
+        android:label="fragment_add_document"
+        tools:layout="@layout/fragment_add_document" />
 </navigation>

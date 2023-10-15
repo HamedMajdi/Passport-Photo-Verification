@@ -11,8 +11,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.passportphotocomparisonthesis.R
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.DatabaseService
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserRepository
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CountryViewModel
 import com.example.passportphotocomparisonthesis.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -42,7 +48,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         binding.bottomNavigationView.setupWithNavController(navController)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

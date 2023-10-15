@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.Country
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.CountryRepository
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities.JsonParser
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities.JsonReader
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import kotlinx.coroutines.launch
 
 class CountryViewModel() : ViewModel() {

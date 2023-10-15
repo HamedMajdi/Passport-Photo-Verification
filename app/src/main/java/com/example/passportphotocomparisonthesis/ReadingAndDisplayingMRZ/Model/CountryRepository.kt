@@ -2,8 +2,8 @@ package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
 import android.content.Context
 import com.example.passportphotocomparisonthesis.R
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities.JsonParser
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities.JsonReader
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 /*
 Repository: On the other hand, the Repository pattern is a kind of container where data access logic is stored.
 It hides the details of data access logic from business logic.

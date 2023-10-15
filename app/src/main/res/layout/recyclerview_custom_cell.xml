@@ -1,68 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape"
-    android:layout_margin="4dp"
-    android:elevation="12dp">
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
 
-
-    <TextView
-        android:id="@+id/tvDocumentID"
-        style="@style/TextViewBold"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        android:text="P53838259"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="4dp"
+        android:paddingBottom="2dp">
 
-    <TextView
-        android:id="@+id/tvNameSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        style="@style/TextViewRegular"
-        android:text="Hamed Majdi"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDocumentID" />
 
-    <ImageView
-        android:id="@+id/ivGender"
-        android:layout_width="@dimen/recyclerview_image_size"
-        android:layout_height="@dimen/recyclerview_image_size"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivDocumentType"
-        app:layout_constraintEnd_toStartOf="@+id/ivDocumentType"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNameSurname"
-        app:srcCompat="@drawable/ic_male" />
+        <TextView
+            android:id="@+id/tvDocumentID"
+            style="@style/TextViewBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="6dp"
+            android:text="P53838259"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivDocumentType"
-        android:layout_width="@dimen/recyclerview_image_size"
-        android:layout_height="@dimen/recyclerview_image_size"
-        app:layout_constraintBottom_toBottomOf="@+id/ivFlag"
-        app:layout_constraintEnd_toStartOf="@+id/ivFlag"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivGender"
-        app:layout_constraintTop_toTopOf="@+id/ivGender"
-        app:srcCompat="@drawable/ic_type3" />
+        <TextView
+            android:id="@+id/tvNameSurname"
+            style="@style/TextViewRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="Hamed Majdi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDocumentID" />
 
-    <ImageView
-        android:id="@+id/ivFlag"
-        android:layout_width="@dimen/recyclerview_image_size"
-        android:layout_height="@dimen/recyclerview_image_size"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivDocumentType"
-        app:layout_constraintTop_toTopOf="@+id/ivGender"
-        app:srcCompat="@drawable/flag_ir" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/ivGender"
+            android:layout_width="@dimen/recyclerview_image_size"
+            android:layout_height="@dimen/recyclerview_image_size"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDocumentType"
+            app:layout_constraintEnd_toStartOf="@+id/ivDocumentType"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameSurname"
+            app:srcCompat="@drawable/ic_male" />
+
+        <ImageView
+            android:id="@+id/ivDocumentType"
+            android:layout_width="@dimen/recyclerview_image_size"
+            android:layout_height="@dimen/recyclerview_image_size"
+            app:layout_constraintBottom_toBottomOf="@+id/ivFlag"
+            app:layout_constraintEnd_toStartOf="@+id/ivFlag"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivGender"
+            app:layout_constraintTop_toTopOf="@+id/ivGender"
+            app:srcCompat="@drawable/ic_type3" />
+
+        <ImageView
+            android:id="@+id/ivFlag"
+            android:layout_width="@dimen/recyclerview_image_size"
+            android:layout_height="@dimen/recyclerview_image_size"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivDocumentType"
+            app:layout_constraintTop_toTopOf="@+id/ivGender"
+            app:srcCompat="@drawable/flag_ir" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
+

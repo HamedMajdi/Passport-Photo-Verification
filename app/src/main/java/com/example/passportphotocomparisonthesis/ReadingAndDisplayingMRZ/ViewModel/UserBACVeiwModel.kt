@@ -30,7 +30,7 @@ class UserBACVeiwModel(application: Application): AndroidViewModel(application) 
 
     fun getUsers(){
         coroutineScope.launch {
-            _users.value = userRepository.getAllUsers()
+            _users.postValue(userRepository.getAllUsers())
         }
     }
 

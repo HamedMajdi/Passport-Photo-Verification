@@ -1,4 +1,4 @@
-package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ
+package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.passportphotocomparisonthesis.R
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities.DocTypeImageGenerator
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities.GenderImageGenerator
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.passportphotocomparisonthesis.Utils.IconGenerator.DocTypeImageGenerator
+import com.example.passportphotocomparisonthesis.Utils.IconGenerator.GenderImageGenerator
 
 class RecyclerViewAdapter(var users: ArrayList<UserBAC>): RecyclerView.Adapter<RecyclerViewAdapter.UserViewHolder>() {
 
@@ -52,15 +49,15 @@ class RecyclerViewAdapter(var users: ArrayList<UserBAC>): RecyclerView.Adapter<R
                 ivGender.setImageResource(genderImageGenerator.imageResId)
             }
 
-            Glide.with(ivFlag.context)
-                .load("https://flagcdn.com/w80/${user.nationalityFirst2Digits}.png")
+            Glide.with(itemView.context)
+                .load("https://flagcdn.com/w80/${user.nationalityFirst2Digits.lowercase()}.png")
+                .into(ivFlag)
 
             val docType = DocTypeImageGenerator.fromId(user.travelDocumentType)
 
             if (docType != null) {
                 ivDocType.setImageResource(docType.imageResId)
             }
-
         }
     }
 

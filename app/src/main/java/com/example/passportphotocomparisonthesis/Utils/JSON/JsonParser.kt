@@ -1,4 +1,4 @@
-package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities
+package com.example.passportphotocomparisonthesis.Utils.JSON
 
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.Country
 import com.google.gson.Gson

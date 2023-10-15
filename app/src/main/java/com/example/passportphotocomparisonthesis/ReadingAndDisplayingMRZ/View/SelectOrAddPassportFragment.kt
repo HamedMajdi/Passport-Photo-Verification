@@ -1,32 +1,68 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.passportphotocomparisonthesis.R
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CountryViewModel
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.UserBACVeiwModel
+import com.example.passportphotocomparisonthesis.databinding.FragmentSelectOrAddPassportBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SelectOrAddPassportFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SelectOrAddPassportFragment : Fragment() {
 
+    private val adapter = RecyclerViewAdapter(arrayListOf())
+    private lateinit var userViewModel: UserBACVeiwModel
+
+    private lateinit var binding: FragmentSelectOrAddPassportBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_select_or_add_passport, container, false)
+        binding = FragmentSelectOrAddPassportBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.recyclerViewUsers.adapter = adapter
+        binding.recyclerViewUsers.layoutManager = LinearLayoutManager(requireContext())
 
+
+        userViewModel = ViewModelProvider(this).get(UserBACVeiwModel::class.java)
+        val userBAC = UserBAC(
+            "P52838259",
+            "240424",
+            "200295",
+            "HAMED MAJDI",
+            "M",
+            "IRAN",
+            "IR",
+            3
+        )
+
+        userViewModel.addUser(userBAC)
+        userViewModel.getUsers()
+
+        userViewModel.users.observe(viewLifecycleOwner, Observer {
+            adapter.updateUsers(it)
+        })
+
+        binding.addNewUser.setOnClickListener {
+            findNavController().navigate(R.id.action_selectOrAddPassportFragment_to_addDocumentFragment)
+        }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        userViewModel.getUsers()
+    }
 }

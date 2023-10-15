@@ -1,4 +1,4 @@
-package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities
+package com.example.passportphotocomparisonthesis.Utils.IconGenerator
 
 import com.example.passportphotocomparisonthesis.R
 

@@ -6,6 +6,7 @@ import androidx.room.Ignore
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import androidx.room.util.query
 
 @Dao
@@ -21,4 +22,7 @@ interface UserBACDao {
 
     @Delete
     suspend fun deleteUser(userBAC: UserBAC)
+
+    @Update
+    suspend fun updateUser(userBAC: UserBAC)
 }

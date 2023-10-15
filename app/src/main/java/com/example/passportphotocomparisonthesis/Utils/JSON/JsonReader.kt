@@ -1,4 +1,4 @@
-package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Utilities
+package com.example.passportphotocomparisonthesis.Utils.JSON
 
 import android.content.Context
 import androidx.annotation.RawRes
