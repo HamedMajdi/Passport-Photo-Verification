@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
     override fun analyze(imageProxy: ImageProxy) {
         analyzerScope.launch {
             val mediaImage = imageProxy.image
+
             if (mediaImage != null) {
                 val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
                 viewModel.detectText(image)
