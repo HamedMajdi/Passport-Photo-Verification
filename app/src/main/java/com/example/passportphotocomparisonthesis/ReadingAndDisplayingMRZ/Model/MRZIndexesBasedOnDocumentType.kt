@@ -86,7 +86,7 @@ class DocType3 : DocType {
     }
 }
 
-class MRZIndexesBasedOnDocumentType(docType: DocType) {
+class MRZIndexesBasedOnDocumentType(docType: Int) {
 
     var docNumberStartIndex= -1
     var docNumberEndIndex= -1
@@ -109,6 +109,10 @@ class MRZIndexesBasedOnDocumentType(docType: DocType) {
     var nationalityEndIndex= -1
 
     init {
-        docType.setValues(this)
+        when (docType){
+            1 -> DocType1().setValues(this)
+            2 -> DocType2().setValues(this)
+            3 -> DocType3().setValues(this)
+        }
     }
 }

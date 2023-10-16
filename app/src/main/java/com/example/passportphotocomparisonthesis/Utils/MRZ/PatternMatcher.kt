@@ -2,15 +2,25 @@ package com.example.passportphotocomparisonthesis.Utils.MRZ
 
 import java.util.regex.Matcher
 
-class PatternMatcher(private val text: String) {
+class PatternMatcher() {
+
 
     private val patternTD1 = PatternGenerator.getPatternTD1()
     private val patternTD2 = PatternGenerator.getPatternTD2()
     private val patternTD3 = PatternGenerator.getPatternTD3()
 
-    val matcherTD1: Matcher = patternTD1.matcher(text)
-    val matcherTD2: Matcher = patternTD2.matcher(text)
-    val matcherTD3: Matcher = patternTD3.matcher(text)
+    lateinit var text: String
+    lateinit var matcherTD1: Matcher
+    lateinit var matcherTD2: Matcher
+    lateinit var matcherTD3: Matcher
+    fun setNewText(text: String){
+        this.text = text
+        matcherTD1 = patternTD1.matcher(text)
+        matcherTD2 = patternTD2.matcher(text)
+        matcherTD3 = patternTD3.matcher(text)
+
+    }
+    fun doesMatchWithMRZPattern() = matcherTD1.find() || matcherTD2.find() || matcherTD3.find()
 
     fun findDocumentType(): Int?{
         if (matcherTD1.find())
