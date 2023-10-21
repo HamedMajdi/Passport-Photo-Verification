@@ -41,9 +41,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAddByScanningBinding.inflate(layoutInflater, container, false)
         previewView = binding.camera
 

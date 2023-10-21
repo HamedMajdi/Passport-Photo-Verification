@@ -18,8 +18,7 @@ which means the camera only runs when your app is at the foreground,
 improving your app’s performance and battery usage.
 
  */
-class CameraHandler(private val lifecycleOwner: LifecycleOwner,
-                    private val context: Context) {
+class CameraHandler(private val lifecycleOwner: LifecycleOwner, private val context: Context) {
 
     private lateinit var cameraProvider: ProcessCameraProvider
     private lateinit var preview: Preview

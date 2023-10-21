@@ -27,6 +27,7 @@ class DocType1 : DocType {
             documentTypeIndex = CONSTANTS.DOCUMENT_TYPE_DOC_TYPE1
 
             nameSurNameStartIndex = CONSTANTS.NAME_SUBSTRING_START_INDEX_DOC_TYPE1
+            nameSurNameEndIndex = CONSTANTS.NAME_SUBSTRING_END_INDEX_DOC_TYPE1
 
             nationalityStartIndex = CONSTANTS.NATIONALITY_SUBSTRING_START_INDEX_DOC_TYPE1
             nationalityEndIndex = CONSTANTS.NATIONALITY_SUBSTRING_END_INDEX_DOC_TYPE1
@@ -53,6 +54,7 @@ class DocType2 : DocType {
             documentTypeIndex = CONSTANTS.DOCUMENT_TYPE_DOC_TYPE2
 
             nameSurNameStartIndex = CONSTANTS.NAME_SUBSTRING_START_INDEX_DOC_TYPE2
+            nameSurNameEndIndex = CONSTANTS.NAME_SUBSTRING_END_INDEX_DOC_TYPE2
 
             nationalityStartIndex = CONSTANTS.NATIONALITY_SUBSTRING_START_INDEX_DOC_TYPE2
             nationalityEndIndex = CONSTANTS.NATIONALITY_SUBSTRING_END_INDEX_DOC_TYPE2
@@ -79,6 +81,7 @@ class DocType3 : DocType {
             documentTypeIndex = CONSTANTS.DOCUMENT_TYPE_DOC_TYPE3
 
             nameSurNameStartIndex = CONSTANTS.NAME_SUBSTRING_START_INDEX_DOC_TYPE3
+            nameSurNameEndIndex = CONSTANTS.NAME_SUBSTRING_END_INDEX_DOC_TYPE3
 
             nationalityStartIndex = CONSTANTS.NATIONALITY_SUBSTRING_START_INDEX_DOC_TYPE3
             nationalityEndIndex = CONSTANTS.NATIONALITY_SUBSTRING_END_INDEX_DOC_TYPE3
@@ -104,6 +107,7 @@ class MRZIndexesBasedOnDocumentType(docType: Int) {
     var documentTypeIndex = -1
 
     var nameSurNameStartIndex = -1
+    var nameSurNameEndIndex = -1
 
     var nationalityStartIndex = -1
     var nationalityEndIndex = -1

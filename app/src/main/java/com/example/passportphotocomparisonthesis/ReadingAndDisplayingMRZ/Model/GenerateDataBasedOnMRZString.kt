@@ -1,52 +1,95 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
+
 class GenerateDataBasedOnMRZString(private val rawText: String, private val documentType: Int) {
 
     val indexes = MRZIndexesBasedOnDocumentType(documentType)
+    val cameraViewModel = CameraViewModel()
 
-    fun checkDocumentNumber(): Boolean{
-        val calculatedCheckDigit = CheckGeneratedMRZValues.calculateDateCheckDigit(rawText)
-        return calculatedCheckDigit == rawText.elementAt(indexes.docCheckDigitIndex)
-    }
-    fun getDocumentNumber(): String?{
-        try {
+    fun getDocumentNumber(): String? {
+        if (CheckGeneratedMRZValues.isIndexingCorrect(rawText, indexes.docNumberStartIndex, indexes.docNumberEndIndex)) {
+            val extractedDocumentNumber =
+                rawText.substring(indexes.docNumberStartIndex, indexes.docNumberEndIndex)
+            val extractedDocumentNumberCheckDigit = rawText.elementAt(indexes.docCheckDigitIndex)
 
-        } catch (e: Exception){
-            when(e) {
-                is IndexOutOfBoundsException -> {
-                    // handle IndexOutOfBoundsException
-                }
-//                is InvalidCheckDigitException -> {
-//                    // handle InvalidCheckDigitException
-//                }
-//                is IncorrectFormatException -> {
-//                    // handle IncorrectFormatException
-//                }
-                else -> throw e
+            if (CheckGeneratedMRZValues.isDocumentCheckDigitValid(extractedDocumentNumber, extractedDocumentNumberCheckDigit)) {
+                return extractedDocumentNumber
             }
         }
-        return rawText.substring(indexes.docNumberStartIndex, indexes.docNumberEndIndex)
+        return null
     }
 
-    fun getBirthDate(): String?{
-        return rawText.substring(indexes.birthDateStartIndex, indexes.birthDateEndIndex)
+    fun getBirthDate(): String? {
+        if (CheckGeneratedMRZValues.isIndexingCorrect(rawText, indexes.birthDateStartIndex, indexes.birthDateEndIndex)) {
+            val extractedDate =
+                rawText.substring(indexes.birthDateStartIndex, indexes.birthDateEndIndex)
+            val extractedDateCheckDigit = rawText.elementAt(indexes.birthDateCheckDigitIndex)
+
+            if (CheckGeneratedMRZValues.isDateCheckDigitValid(extractedDate, extractedDateCheckDigit)) {
+                return extractedDate
+            }
+        }
+        return null
     }
 
-    fun getExpirationDate(): String?{
-        return rawText.substring(indexes.expirationDateStartIndex, indexes.expirationDateEndIndex)
+    fun getExpirationDate(): String? {
+        if (CheckGeneratedMRZValues.isIndexingCorrect(rawText, indexes.expirationDateStartIndex, indexes.expirationDateEndIndex)) {
+            val extractedDate =
+                rawText.substring(indexes.expirationDateStartIndex, indexes.expirationDateEndIndex)
+            val extractedDateCheckDigit = rawText.elementAt(indexes.expirationDateCheckDigitIndex)
+
+            if (CheckGeneratedMRZValues.isDateCheckDigitValid(extractedDate, extractedDateCheckDigit)) {
+                return extractedDate
+            }
+        }
+        return null
     }
 
-    fun getGender(): String?{
-        return rawText.substring(indexes.genderIndex)
-    }
-    fun getNationality(): String?{
-        return rawText.substring(indexes.nationalityStartIndex, indexes.nationalityEndIndex)
+    fun getGender(): String? {
+        if (CheckGeneratedMRZValues.isIndexingCorrect(
+                rawText,
+                indexes.genderIndex,
+                indexes.genderIndex + 1
+            )
+        )
+            return rawText.substring(indexes.genderIndex, indexes.genderIndex + 1)
+        return null
     }
 
-    fun getName(): String?{
+    fun getNationality(): String? {
+        if (CheckGeneratedMRZValues.isIndexingCorrect(
+                rawText,
+                indexes.nationalityStartIndex,
+                indexes.nationalityEndIndex
+            )
+        )
+            return rawText.substring(indexes.genderIndex, indexes.genderIndex + 1)
+        return null
+    }
+
+    fun getName(): String? {
+        if (CheckGeneratedMRZValues.isIndexingCorrect(
+                rawText,
+                indexes.nameSurNameStartIndex,
+                indexes.nameSurNameEndIndex
+            )
+        )
+            if (CheckGeneratedMRZValues.isNamingAccordingToConvention(
+                    rawText,
+                    indexes.nameSurNameStartIndex,
+                    indexes.nameSurNameEndIndex
+                )
+            )
+                return extractName()
+        return null
+    }
+
+    private fun extractName(): String? {
         val splittedFirstNameAndLastName = rawText.split("<<")
         val lastName = splittedFirstNameAndLastName[0].replace("<", " ").trim()
-        val firstName = splittedFirstNameAndLastName.drop(1).joinToString(" ") { it.replace("<", " ").trim() }
+        val firstName =
+            splittedFirstNameAndLastName.drop(1).joinToString(" ") { it.replace("<", " ").trim() }
         return "$firstName  $lastName"
     }
 }
