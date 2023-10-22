@@ -10,6 +10,7 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.view.PreviewView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
 import com.example.passportphotocomparisonthesis.Utils.Camera.CameraHandler
@@ -24,6 +25,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
 
     private lateinit var binding: FragmentAddByScanningBinding
     private lateinit var previewView: PreviewView
+    private lateinit var rectView: RectangleView
     private lateinit var viewModel: CameraViewModel
     private lateinit var cameraHandler: CameraHandler
     private lateinit var imageAnalyzer: ImageAnalyzer
@@ -44,6 +46,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAddByScanningBinding.inflate(layoutInflater, container, false)
         previewView = binding.camera
+        rectView = binding.rectView
 
         viewModel = ViewModelProvider(this).get(CameraViewModel::class.java)
         return binding.root
@@ -53,12 +56,16 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         super.onViewCreated(view, savedInstanceState)
 
         cameraHandler = CameraHandler(this, requireContext())
-        imageAnalyzer = ImageAnalyzer(viewModel)
+//        imageAnalyzer = ImageAnalyzer(viewModel, RectangleView(requireContext()))
+        imageAnalyzer = ImageAnalyzer(viewModel, rectView)
 
         cameraPermissionRequester = CameraPermissionRequest(this, cameraRequestPermissionLauncher)
 
         checkAndRequestCameraAccess()
 
+        viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
 //        viewModel.textDetected.observe(viewLifecycleOwner, Observer { text ->
 //            if (text == "YOUR_PATTERN") {
 ////                findNavController().navigate(R.id.action_cameraFragment_to_newFragment)

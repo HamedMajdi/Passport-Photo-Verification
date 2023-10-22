@@ -1,5 +1,6 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
+import android.util.Log
 import java.lang.IndexOutOfBoundsException
 
 class CheckGeneratedMRZValues {
@@ -44,7 +45,9 @@ class CheckGeneratedMRZValues {
                 val value = if (c.isDigit()) {
                     c.toString().toInt()
                 } else {
-                    throw IllegalArgumentException("Invalid character in birth date: $c")
+//                    throw IllegalArgumentException("Invalid character in birth date: $c")
+                    Log.e("ERROR", "Invalid character in date: $c", )
+                    return ' '
                 }
                 sum += value * weights[i % weights.size]
             }

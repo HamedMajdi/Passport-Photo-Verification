@@ -7,6 +7,8 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
+import java.util.concurrent.Executors
 
 /*
 ProcessCameraProvider is a class in the CameraX library in Android. It’s a singleton class that
@@ -36,7 +38,10 @@ class CameraHandler(private val lifecycleOwner: LifecycleOwner, private val cont
     }
 
     private fun bindCamera(selector: CameraSelector) {
-        imageAnalysis = ImageAnalysis.Builder().build()
+
+
+//        val analyzer = ImageAnalyzer(CameraViewModel())
+//        imageAnalysis.setAnalyzer(Executors.newSingleThreadExecutor(), analyzer)
 
         try {
             cameraProvider.unbindAll()
@@ -52,5 +57,7 @@ class CameraHandler(private val lifecycleOwner: LifecycleOwner, private val cont
 
     fun setImageAnalyzer(analyzer: ImageAnalysis.Analyzer) {
 //        imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(context), analyzer)
+        imageAnalysis = ImageAnalysis.Builder().build()
+        imageAnalysis.setAnalyzer(Executors.newSingleThreadExecutor(), analyzer)
     }
 }

@@ -20,14 +20,15 @@ class PatternMatcher() {
         matcherTD3 = patternTD3.matcher(text)
 
     }
-    fun doesMatchWithMRZPattern() = matcherTD1.find() || matcherTD2.find() || matcherTD3.find()
+    fun doesMatchWithMRZPattern() = matcherTD1.matches() || matcherTD2.matches() || matcherTD3.matches()
 
     fun findDocumentType(): Int?{
-        if (matcherTD1.find())
+
+        if (matcherTD1.matches())
             return 1
-        else if (matcherTD2.find())
+        else if (matcherTD2.matches())
             return 2
-        else if (matcherTD3.find())
+        else if (matcherTD3.matches())
             return 3
         return null
     }
