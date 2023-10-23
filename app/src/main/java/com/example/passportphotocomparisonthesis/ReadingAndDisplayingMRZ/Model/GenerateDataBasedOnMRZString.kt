@@ -1,11 +1,11 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
+import android.util.Log
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
 
 class GenerateDataBasedOnMRZString(private val rawText: String, private val documentType: Int) {
 
     val indexes = MRZIndexesBasedOnDocumentType(documentType)
-    val cameraViewModel = CameraViewModel()
 
     fun getDocumentNumber(): String? {
         if (CheckGeneratedMRZValues.isIndexingCorrect(rawText, indexes.docNumberStartIndex, indexes.docNumberEndIndex)) {
@@ -35,25 +35,25 @@ class GenerateDataBasedOnMRZString(private val rawText: String, private val docu
 
     fun getExpirationDate(): String? {
         if (CheckGeneratedMRZValues.isIndexingCorrect(rawText, indexes.expirationDateStartIndex, indexes.expirationDateEndIndex)) {
-            val extractedDate =
-                rawText.substring(indexes.expirationDateStartIndex, indexes.expirationDateEndIndex)
-            val extractedDateCheckDigit = rawText.elementAt(indexes.expirationDateCheckDigitIndex)
 
-            if (CheckGeneratedMRZValues.isDateCheckDigitValid(extractedDate, extractedDateCheckDigit)) {
-                return extractedDate
+            if (CheckGeneratedMRZValues.isGenderCharacterPresentBeforeExpirationDate(rawText, indexes.expirationDateStartIndex-1)){
+
+                val extractedDate = rawText.substring(indexes.expirationDateStartIndex, indexes.expirationDateEndIndex)
+                val extractedDateCheckDigit = rawText.elementAt(indexes.expirationDateCheckDigitIndex)
+                if (CheckGeneratedMRZValues.isDateCheckDigitValid(extractedDate, extractedDateCheckDigit)) {
+                    return extractedDate
+                }
             }
         }
         return null
     }
 
     fun getGender(): String? {
-        if (CheckGeneratedMRZValues.isIndexingCorrect(
-                rawText,
-                indexes.genderIndex,
-                indexes.genderIndex + 1
-            )
-        )
-            return rawText.substring(indexes.genderIndex, indexes.genderIndex + 1)
+        if (CheckGeneratedMRZValues.isIndexingCorrect(rawText, indexes.genderIndex, indexes.genderIndex + 1))
+        {
+            if (CheckGeneratedMRZValues.isGenderValid(rawText, indexes.genderIndex))
+                return rawText.substring(indexes.genderIndex, indexes.genderIndex + 1)
+        }
         return null
     }
 

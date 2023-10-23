@@ -1,5 +1,6 @@
 package com.example.passportphotocomparisonthesis
 
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.CheckGeneratedMRZValues
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -14,6 +15,5 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
-
 
 }

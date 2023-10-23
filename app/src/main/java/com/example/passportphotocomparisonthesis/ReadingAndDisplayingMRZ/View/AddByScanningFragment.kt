@@ -64,8 +64,20 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         checkAndRequestCameraAccess()
 
         viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            if (it!=null)
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
+
+        viewModel.detectedBirthDate.observe(viewLifecycleOwner, Observer {
+            if (it!=null)
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
+            if (it!=null)
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
+
 //        viewModel.textDetected.observe(viewLifecycleOwner, Observer { text ->
 //            if (text == "YOUR_PATTERN") {
 ////                findNavController().navigate(R.id.action_cameraFragment_to_newFragment)

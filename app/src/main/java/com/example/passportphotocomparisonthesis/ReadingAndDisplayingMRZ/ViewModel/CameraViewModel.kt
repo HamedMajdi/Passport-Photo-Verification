@@ -35,27 +35,6 @@ class CameraViewModel : ViewModel() {
     val detectedGender: LiveData<String> get() = _detectedGender
 
 
-
-
-
-    private val _textDetected = MutableLiveData<String>()
-    val textDetected: LiveData<String> get() = _textDetected
-
-    fun detectText(image: InputImage) {
-
-        val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
-        recognizer.process(image)
-
-        recognizer.process(image)
-            .addOnSuccessListener { visionText ->
-                _textDetected.value = visionText.text
-            }
-            .addOnFailureListener { e ->
-                // Handle any errors
-            }
-    }
-
-
     fun hasReceivedAll(): Boolean = detectedDocumentNumber != null && detectedExpirationDate != null && detectedBirthDate != null
 
 

@@ -9,13 +9,11 @@ class CheckGeneratedMRZValues {
         fun isDocumentCheckDigitValid(documentNumber: String, checkDigit: Char): Boolean{
             val calculatedCheckDigit = calculateDocumentNumberCheckDigit(documentNumber)
             return checkDigit == calculatedCheckDigit
-            return false
         }
 
         fun isDateCheckDigitValid(date: String, checkDigit: Char): Boolean{
             val calculatedCheckDigit = calculateDateCheckDigit(date)
             return checkDigit == calculatedCheckDigit
-            return false
         }
 
         private fun calculateDocumentNumberCheckDigit(documentNumber: String): Char {
@@ -78,6 +76,14 @@ class CheckGeneratedMRZValues {
         fun isNamingAccordingToConvention(name: String, startIndex: Int, endIndex: Int): Boolean{
             val pattern = Regex("^[a-zA-Z]+(<[a-zA-Z]+)*<<[a-zA-Z]+(<[a-zA-Z]*)*$")
             return pattern.matches(name)
+        }
+
+        fun isGenderValid(data: String, index: Int): Boolean{
+            return data.elementAt(index) == 'M' || data.elementAt(index) == 'F' || data.elementAt(index) == '<'
+
+        }
+        fun isGenderCharacterPresentBeforeExpirationDate(data: String, index: Int): Boolean{
+            return isGenderValid(data, index)
         }
     }
 }
