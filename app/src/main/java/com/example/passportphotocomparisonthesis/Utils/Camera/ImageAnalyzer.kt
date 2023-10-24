@@ -1,15 +1,9 @@
 package com.example.passportphotocomparisonthesis.Utils.Camera
 
 import android.annotation.SuppressLint
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.util.Log
-import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.GenerateDataBasedOnMRZString
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.RectangleView
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
 import com.example.passportphotocomparisonthesis.Utils.MRZ.PatternMatcher
 import com.google.mlkit.vision.common.InputImage
@@ -20,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class ImageAnalyzer(private val viewModel: CameraViewModel, private val rectangleView: RectangleView) : ImageAnalysis.Analyzer {
+class ImageAnalyzer(private val viewModel: CameraViewModel) : ImageAnalysis.Analyzer {
 
 
     private val TAG_TRUE = "INSIDE TRUE"

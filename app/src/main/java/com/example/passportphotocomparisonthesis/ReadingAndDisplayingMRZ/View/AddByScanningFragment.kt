@@ -25,7 +25,6 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
 
     private lateinit var binding: FragmentAddByScanningBinding
     private lateinit var previewView: PreviewView
-    private lateinit var rectView: RectangleView
     private lateinit var viewModel: CameraViewModel
     private lateinit var cameraHandler: CameraHandler
     private lateinit var imageAnalyzer: ImageAnalyzer
@@ -46,7 +45,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAddByScanningBinding.inflate(layoutInflater, container, false)
         previewView = binding.camera
-        rectView = binding.rectView
+
 
         viewModel = ViewModelProvider(this).get(CameraViewModel::class.java)
         return binding.root
@@ -57,7 +56,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
 
         cameraHandler = CameraHandler(this, requireContext())
 //        imageAnalyzer = ImageAnalyzer(viewModel, RectangleView(requireContext()))
-        imageAnalyzer = ImageAnalyzer(viewModel, rectView)
+        imageAnalyzer = ImageAnalyzer(viewModel)
 
         cameraPermissionRequester = CameraPermissionRequest(this, cameraRequestPermissionLauncher)
 
