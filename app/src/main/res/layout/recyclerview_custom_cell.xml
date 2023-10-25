@@ -72,7 +72,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/ivDocumentType"
             app:layout_constraintTop_toTopOf="@+id/ivGender"
-            app:srcCompat="@drawable/flag_ir" />
+             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

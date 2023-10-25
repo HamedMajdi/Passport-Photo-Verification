@@ -6,8 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.DatabaseService
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBACDao
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserRepository
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.UserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

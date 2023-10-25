@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.Country
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.CountryRepository
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.CountryRepository
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import kotlinx.coroutines.launch
