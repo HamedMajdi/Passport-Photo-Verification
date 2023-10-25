@@ -44,6 +44,9 @@ class AddManuallyFragment : Fragment() {
         val genderDataForSpinner = StaticDataRepository.getGenderOptions()
         val countryAdapter = SpinnerAdapter(requireContext(), genderDataForSpinner)
         binding.spinnerGender.adapter = countryAdapter
+//        binding.spinnerGender.adapter = countryAdapter
+
+//        binding.spinnerGender.selectedItem as SpinnerData
     }
 
     fun loadDocumentTypeSpinner() {
