@@ -1,6 +1,7 @@
 package com.example.passportphotocomparisonthesis.Utils.Camera
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.GenerateDataBasedOnMRZString
@@ -38,6 +39,10 @@ class ImageAnalyzer(private val viewModel: CameraViewModel) : ImageAnalysis.Anal
 
                         val matcher = PatternMatcher()
                         for (block in visionText.textBlocks) {
+
+
+                            Log.d(TAG_TRUE, "analyze: ")
+
 
                             val blockText = block.text
                             val blockCornerPoints = block.cornerPoints
@@ -86,17 +91,17 @@ class ImageAnalyzer(private val viewModel: CameraViewModel) : ImageAnalysis.Anal
                                 if  (matcher.doesMatchWithMRZPattern()){
 
 
-//                                    Log.d(TAG_TRUE, "inside true")
-//                                    Log.d(TAG_TRUE, lineText)
+                                    Log.d(TAG_TRUE, "inside true")
+                                    Log.d(TAG_TRUE, lineText)
 
                                 val documentType = matcher.findDocumentType()
-//                                Log.d(TAG_TRUE, documentType.toString())
+                                Log.d(TAG_TRUE, documentType.toString())
                                 val stringToRecognize = matcher.textToParseBasedOnDocumentType()
                                 val stringGenerator = GenerateDataBasedOnMRZString(stringToRecognize!!, documentType!!)
 
-//                                Log.d(TAG_TRUE, "Document: ${stringGenerator.getDocumentNumber()}")
-//                                Log.d(TAG_TRUE, "BIRTH: ${stringGenerator.getBirthDate()}")
-//                                Log.d(TAG_TRUE, "Expiration: ${stringGenerator.getExpirationDate()}")
+                                Log.d(TAG_TRUE, "Document: ${stringGenerator.getDocumentNumber()}")
+                                Log.d(TAG_TRUE, "BIRTH: ${stringGenerator.getBirthDate()}")
+                                Log.d(TAG_TRUE, "Expiration: ${stringGenerator.getExpirationDate()}")
                                 setNonNullDataToViewModel(stringGenerator)
                                 }
                             }

@@ -23,9 +23,31 @@
         android:name="com.example.passportphotocomparisonthesis.View.SettingsFragment"
         android:label="@string/label_settings"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/addDocumentFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddDocumentFragment"
-        android:label="fragment_add_document"
-        tools:layout="@layout/fragment_add_document" />
+        tools:layout="@layout/fragment_add_document">
+
+        <action
+            android:id="@+id/action_addDocumentFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addByScanningFragment"
+        android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddByScanningFragment"
+        tools:layout="@layout/fragment_add_by_scanning">
+
+        <action
+            android:id="@+id/action_addByScanningFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userMRZFragment"
+        android:name="com.example.passportphotocomparisonthesis.UserMRZFragment"
+        tools:layout="@layout/fragment_user_m_r_z" />
 </navigation>

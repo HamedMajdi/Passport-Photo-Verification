@@ -1,6 +1,7 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +13,12 @@ import androidx.camera.view.PreviewView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.passportphotocomparisonthesis.R
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
 import com.example.passportphotocomparisonthesis.Utils.Camera.CameraHandler
 import com.example.passportphotocomparisonthesis.Utils.Camera.ImageAnalyzer
+import com.example.passportphotocomparisonthesis.Utils.DateParser
 import com.example.passportphotocomparisonthesis.Utils.Permissions.CameraPermissionRequest
 import com.example.passportphotocomparisonthesis.Utils.Permissions.PermissionRequester
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanningBinding
@@ -42,7 +46,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentAddByScanningBinding.inflate(layoutInflater, container, false)
         previewView = binding.camera
 
@@ -55,33 +59,14 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         super.onViewCreated(view, savedInstanceState)
 
         cameraHandler = CameraHandler(this, requireContext())
-//        imageAnalyzer = ImageAnalyzer(viewModel, RectangleView(requireContext()))
         imageAnalyzer = ImageAnalyzer(viewModel)
 
         cameraPermissionRequester = CameraPermissionRequest(this, cameraRequestPermissionLauncher)
 
         checkAndRequestCameraAccess()
 
-        viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
-            if (it!=null)
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        })
+        loadAndObserveViewModelVariables()
 
-        viewModel.detectedBirthDate.observe(viewLifecycleOwner, Observer {
-            if (it!=null)
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        })
-
-        viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
-            if (it!=null)
-                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        })
-
-//        viewModel.textDetected.observe(viewLifecycleOwner, Observer { text ->
-//            if (text == "YOUR_PATTERN") {
-////                findNavController().navigate(R.id.action_cameraFragment_to_newFragment)
-//            }
-//        })
     }
     fun checkAndRequestCameraAccess() {
         if (cameraPermissionRequester.isAccessGranted()) {
@@ -96,8 +81,34 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         cameraHandler.setImageAnalyzer(imageAnalyzer)
     }
 
+    private fun loadAndObserveViewModelVariables(){
+        viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
+            if (it!=null)
+                binding.tvDocumentID.text = it
+        })
+
+        viewModel.detectedBirthDate.observe(viewLifecycleOwner, Observer {
+            if (it!=null)
+                binding.tvBirthDate.text = DateParser.parseDate(it)
+        })
+
+        viewModel.detectedExpirationDate.observe(viewLifecycleOwner, Observer {
+            if (it!=null){
+                binding.tvExpirationDate.text = DateParser.parseDate(it)
+            }
+        })
+
+        viewModel.hasReceivedAll.observe(viewLifecycleOwner, Observer {
+            if (it == true){
+                findNavController()?.navigate(R.id.action_addDocumentFragment_to_userMRZFragment)
+            }
+        })
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         imageAnalyzer.stop()
     }
+
+
 }
