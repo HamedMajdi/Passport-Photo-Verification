@@ -3,4 +3,5 @@
     <dimen name="recyclerview_image_size">24dp</dimen>
     <dimen name="tab_corner_radius">12dp</dimen>
     <dimen name="progress_bar_size">18dp</dimen>
+    <dimen name="round_radius">16dp</dimen>
 </resources>

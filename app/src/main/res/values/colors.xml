@@ -4,5 +4,4 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_primary">#FF5722</color>
     <color name="color_primary_dark">#E33D09</color>
-    <color name="selected_tab_color">#FF5722</color>
 </resources>
