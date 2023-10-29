@@ -21,7 +21,8 @@
         android:src="@drawable/ic_scan"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@color/white" />
+        app:tint="@color/white"
+        android:backgroundTint="@color/color_accent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
