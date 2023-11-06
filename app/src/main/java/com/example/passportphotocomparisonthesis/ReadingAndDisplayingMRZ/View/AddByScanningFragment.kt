@@ -1,7 +1,6 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -89,12 +88,12 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
 
         viewModel.detectedBirthDate.observe(viewLifecycleOwner, Observer {
             if (it!=null)
-                binding.tvBirthDate.text = DateParser.parseDate(it)
+                binding.tvBirthDate.text = DateParser.parseDateFromRawToSlashFormat(it)
         })
 
         viewModel.detectedExpirationDate.observe(viewLifecycleOwner, Observer {
             if (it!=null){
-                binding.tvExpirationDate.text = DateParser.parseDate(it)
+                binding.tvExpirationDate.text = DateParser.parseDateFromRawToSlashFormat(it)
             }
         })
 

@@ -12,4 +12,5 @@ enum class GenderImageGenerator(val id: String, val imageResId: Int) {
             return values().firstOrNull { it.id == id }
         }
     }
+
 }

@@ -1,21 +1,22 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import android.view.inputmethod.InputMethodManager
+import androidx.core.view.get
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.ViewModelProvider
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.StaticDataRepository
-import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.CountryRepository
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.SpinnerData
-import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
-import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.UserBACVeiwModel
+import com.example.passportphotocomparisonthesis.Utils.DateParser
+import com.example.passportphotocomparisonthesis.Utils.IconGenerator.GenderImageGenerator
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddManuallyBinding
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
@@ -27,6 +28,7 @@ class AddManuallyFragment : Fragment() {
 
     private lateinit var binding: FragmentAddManuallyBinding
     private lateinit var coroutineScope: CoroutineScope
+    private lateinit var userViewModel: UserBACVeiwModel
 
     //    private lateinit var countriesDataForSpinner: List<SpinnerData>
     override fun onCreateView(
@@ -45,33 +47,70 @@ class AddManuallyFragment : Fragment() {
         loadDocumentTypeSpinner()
         loadGenderSpinner()
 
+        view.setOnClickListener {
+            hideKeyboard()
+        }
+
+        binding.editTextDocumentNumber.doOnTextChanged { text, start, before, count ->
+            setNextPageButtonOpacity()
+        }
 
         binding.editTextBirthDate.setOnClickListener {
+            hideKeyboard()
             showDatePickerDialog {
-                it
                 binding.TILBirth.error = null
                 binding.editTextBirthDate.setText(it)
+                setNextPageButtonOpacity()
             }
         }
 
         binding.editTextExpirationDate.setOnClickListener {
+            hideKeyboard()
             showDatePickerDialog {
-                it
                 binding.TILExpiration.error = null
                 binding.editTextExpirationDate.setText(it)
+                setNextPageButtonOpacity()
             }
         }
 
         binding.buttonNextDataPiece.setOnClickListener {
 
             val birthCheck = checkBirthDateEditTextValueEntered()
+            setErrorMessage(binding.TILBirth, "Birth Date Must Be Selected", birthCheck)
+
             val expirationCheck = checkExpirationDateEditTextValueEntered()
+            setErrorMessage(binding.TILExpiration, "Expiration Date Must Be Selected", expirationCheck)
+
             val documentCheck = checkDocumentNumberDigitCountValidity()
+            setErrorMessage(binding.TILDocument, "Document Number Must be 9 Characters", documentCheck)
 
             if (birthCheck && expirationCheck && documentCheck){
                 binding.layoutDataPart1.visibility = View.GONE
                 binding.layoutDataPart2.visibility = View.VISIBLE
             }
+        }
+
+        binding.buttonPreviousDataPiece.setOnClickListener {
+            binding.layoutDataPart2.visibility = View.GONE
+            binding.layoutDataPart1.visibility = View.VISIBLE
+        }
+
+        binding.buttonAddToDocumentListDatabase.setOnClickListener {
+            userViewModel = ViewModelProvider(this).get(UserBACVeiwModel::class.java)
+            (binding.spinnerCountry.selectedItem as SpinnerData).text
+
+            val userBAC = UserBAC(
+                binding.editTextDocumentNumber.text.toString(),
+                DateParser.parseDateFromSlashFormatToRaw(binding.editTextExpirationDate.text.toString())!!,
+                DateParser.parseDateFromSlashFormatToRaw(binding.editTextBirthDate.text.toString())!!,
+                binding.editTextName.text.toString(),
+                "M",
+                "IRAN",
+                "IR",
+                3
+            )
+
+            userViewModel.addUser(userBAC)
         }
     }
 
@@ -79,36 +118,37 @@ class AddManuallyFragment : Fragment() {
         return checkBirthDateEditTextValueEntered() && checkExpirationDateEditTextValueEntered() && checkDocumentNumberDigitCountValidity()
     }
 
-
     private fun checkBirthDateEditTextValueEntered(): Boolean {
-        if (binding.editTextBirthDate.text.isNullOrBlank()) {
-            binding.TILBirth.error = "Birth Date Must Be Selected"
-            return false
-        } else{
-            binding.TILBirth.error = null
-            return true
-        }
+        return !binding.editTextBirthDate.text.isNullOrBlank()
     }
 
     private fun checkExpirationDateEditTextValueEntered(): Boolean {
-        if (binding.editTextExpirationDate.text.isNullOrBlank()) {
-            binding.TILExpiration.error = "Expiration Date Must Be Selected"
-            return false
-        }else{
-            binding.TILExpiration.error = null
-            return true
-        }
+        return !binding.editTextExpirationDate.text.isNullOrBlank()
     }
 
+
     private fun checkDocumentNumberDigitCountValidity(): Boolean {
-        if (binding.editTextDocumentNumber.text.isNullOrBlank() || binding.editTextDocumentNumber.length() != 9){
-            binding.TILDocument.error = "Document Number Must be 9 Characters"
-            return false
-        }
-        else{
-            binding.TILDocument.error = null
-            return true
-        }
+        return !(binding.editTextDocumentNumber.text.isNullOrBlank() || binding.editTextDocumentNumber.length() != 9)
+    }
+
+    private fun setErrorMessage(view: TextInputLayout, message: String, isValid: Boolean){
+        if (isValid)
+            view.error = null
+        else
+            view.error = message
+    }
+
+    private fun setNextPageButtonOpacity(){
+        if (areAllNecessaryFieldsFilled())
+            binding.buttonNextDataPiece.alpha = 1f
+        else
+            binding.buttonNextDataPiece.alpha = 0.3f
+    }
+
+    private fun hideKeyboard(){
+        val inputMethodManager = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val view = requireActivity().currentFocus ?: View(activity)
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     private fun showDatePickerDialog(onDatePicked: (String) -> Unit) {
@@ -129,10 +169,7 @@ class AddManuallyFragment : Fragment() {
     private fun loadGenderSpinner() {
         val genderDataForSpinner = StaticDataRepository.getGenderOptions()
         val countryAdapter = SpinnerAdapter(requireContext(), genderDataForSpinner)
-//        binding.spinnerGender.adapter = countryAdapter
-//        binding.spinnerGender.adapter = countryAdapter
-
-//        binding.spinnerGender.selectedItem as SpinnerData
+        binding.spinnerGender.adapter = countryAdapter
     }
 
     private fun loadDocumentTypeSpinner() {
