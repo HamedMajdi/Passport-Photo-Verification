@@ -40,7 +40,6 @@ class StaticDataRepository {
             }
 
             return listOf(SpinnerData(R.drawable.ic_country, "Select a country")) + countryList
-
         }
     }
 }

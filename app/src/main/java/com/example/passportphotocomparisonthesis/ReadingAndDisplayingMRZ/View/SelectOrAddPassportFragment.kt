@@ -37,18 +37,18 @@ class SelectOrAddPassportFragment : Fragment() {
 
 
         userViewModel = ViewModelProvider(this).get(UserBACVeiwModel::class.java)
-        val userBAC = UserBAC(
-            "P52838259",
-            "240424",
-            "200295",
-            "HAMED MAJDI",
-            "M",
-            "IRAN",
-            "IR",
-            3
-        )
-
-        userViewModel.addUser(userBAC)
+//        val userBAC = UserBAC(
+//            "P52838259",
+//            "240424",
+//            "200295",
+//            "HAMED MAJDI",
+//            "M",
+//            "IRAN",
+//            "IR",
+//            3
+//        )
+//
+//        userViewModel.addUser(userBAC)
         userViewModel.getUsers()
 
         userViewModel.users.observe(viewLifecycleOwner, Observer {

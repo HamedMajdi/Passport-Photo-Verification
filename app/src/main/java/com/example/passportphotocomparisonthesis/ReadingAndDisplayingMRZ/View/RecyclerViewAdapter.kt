@@ -44,16 +44,16 @@ class RecyclerViewAdapter(var users: ArrayList<UserBAC>): RecyclerView.Adapter<R
             tvID.text = user.documentID
             tvName.text = user.nameSurname
 
-            val genderImageGenerator = GenderImageGenerator.fromId(user.gender)
+            val genderImageGenerator = user.gender?.let { GenderImageGenerator.fromId(it) }
             if (genderImageGenerator != null) {
                 ivGender.setImageResource(genderImageGenerator.imageResId)
             }
 
             Glide.with(itemView.context)
-                .load("https://flagcdn.com/w80/${user.nationalityFirst2Digits.lowercase()}.png")
+                .load("https://flagcdn.com/w80/${user.nationalityFirst2Digits?.lowercase()}.png")
                 .into(ivFlag)
 
-            val docType = DocTypeImageGenerator.fromId(user.travelDocumentType)
+            val docType = user.travelDocumentType?.let { DocTypeImageGenerator.fromId(it) }
 
             if (docType != null) {
                 ivDocType.setImageResource(docType.imageResId)

@@ -3,7 +3,7 @@ package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 import android.util.Log
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
 
-class GenerateDataBasedOnMRZString(private val rawText: String, private val documentType: Int) {
+class GenerateDataBasedOnMRZString(private val rawText: String, val documentType: Int) {
 
     val indexes = MRZIndexesBasedOnDocumentType(documentType)
 

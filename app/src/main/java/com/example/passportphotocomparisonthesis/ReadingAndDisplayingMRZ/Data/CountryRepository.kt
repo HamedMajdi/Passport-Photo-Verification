@@ -39,4 +39,10 @@ class CountryRepository(private val jsonReader: JsonReader,
         return countries!!
     }
 
-}
+    suspend fun getCountryByFullName(countryFullName: String, context: Context): Country? {
+        if (countries == null) {
+            countries = jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
+        }
+        return countries?.find { it.name == countryFullName }
+
+    } }

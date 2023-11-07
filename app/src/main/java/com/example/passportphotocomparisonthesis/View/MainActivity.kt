@@ -23,14 +23,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        countryViewModel = ViewModelProvider(this).get(CountryViewModel::class.java)
-
-        countryViewModel.queryCountry("IRN", applicationContext)
-        countryViewModel.country.observe(this, Observer {
-            Log.d("SHIT", "${it.name}, ${it.alpha2}, ${it.alpha3}")
-        })
-
         navController = findNavController(R.id.fragmentContainerView)
         val appBarConfiguration = AppBarConfiguration(
             setOf(

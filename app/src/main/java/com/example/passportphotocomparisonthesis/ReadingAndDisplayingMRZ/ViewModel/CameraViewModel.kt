@@ -35,6 +35,9 @@ class CameraViewModel : ViewModel() {
     private val _detectedGender = MutableLiveData<String>(null)
     val detectedGender: LiveData<String> get() = _detectedGender
 
+    private val _detectedDocumentType = MutableLiveData<Int>(null)
+    val detectedDocumentType: LiveData<Int> get() = _detectedDocumentType
+
     private val _hasReceivedAll = MutableLiveData<Boolean>(false)
     val hasReceivedAll: LiveData<Boolean> get() = _hasReceivedAll
 
@@ -77,5 +80,10 @@ class CameraViewModel : ViewModel() {
     fun setGender(gender: String?){
         if (_detectedGender.value == null)
             _detectedGender.value = gender ?:  _detectedGender.value
+    }
+
+    fun setDocumentType(docType: Int?){
+        if (_detectedDocumentType.value == null)
+            _detectedDocumentType.value = docType ?:  _detectedDocumentType.value
     }
 }

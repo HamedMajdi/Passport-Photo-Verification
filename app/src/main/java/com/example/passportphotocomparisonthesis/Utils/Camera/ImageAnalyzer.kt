@@ -41,9 +41,6 @@ class ImageAnalyzer(private val viewModel: CameraViewModel) : ImageAnalysis.Anal
                         for (block in visionText.textBlocks) {
 
 
-                            Log.d(TAG_TRUE, "analyze: ")
-
-
                             val blockText = block.text
                             val blockCornerPoints = block.cornerPoints
                             val blockFrame = block.boundingBox
@@ -125,6 +122,7 @@ class ImageAnalyzer(private val viewModel: CameraViewModel) : ImageAnalysis.Anal
 
 
     private fun setNonNullDataToViewModel(dataGenerator: GenerateDataBasedOnMRZString) {
+        viewModel.setDocumentType(dataGenerator.documentType)
         viewModel.setDocumentNumber(dataGenerator.getDocumentNumber())
         viewModel.setBirthDate(dataGenerator.getBirthDate())
         viewModel.setExpirationDate(dataGenerator.getExpirationDate())

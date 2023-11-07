@@ -33,7 +33,7 @@
             android:id="@+id/action_addDocumentFragment_to_userMRZFragment"
             app:destination="@id/userMRZFragment"
             app:popUpTo="@id/selectOrAddPassportFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment
