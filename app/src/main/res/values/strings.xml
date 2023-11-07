@@ -8,4 +8,9 @@
     <string name="document_number_text">Document Number</string>
     <string name="birth_date_text">Birth Date</string>
     <string name="expiration_date_text">Expiration Date</string>
+    <string name="nfc_verification_required">NFC Verification Required</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="document_number">Document Number</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="name_surname">Name</string>
 </resources>
