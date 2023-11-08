@@ -8,10 +8,14 @@
         android:id="@+id/selectOrAddPassportFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.SelectOrAddPassportFragment"
         android:label="@string/label_verify_passport_id_card"
-        tools:layout="@layout/fragment_select_or_add_passport" >
+        tools:layout="@layout/fragment_select_or_add_passport">
         <action
             android:id="@+id/action_selectOrAddPassportFragment_to_addDocumentFragment"
-            app:destination="@id/addDocumentFragment" />
+            app:destination="@id/addDocumentFragment"></action>
+
+        <action
+            android:id="@+id/action_selectOrAddPassportFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment" />
     </fragment>
     <fragment
         android:id="@+id/modelTestFragment"
@@ -49,5 +53,11 @@
     <fragment
         android:id="@+id/userMRZFragment"
         android:name="com.example.passportphotocomparisonthesis.UserMRZFragment"
-        tools:layout="@layout/fragment_user_m_r_z" />
+        tools:layout="@layout/fragment_user_m_r_z">
+
+        <argument
+            android:name="user"
+            app:argType="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC" />
+
+    </fragment>
 </navigation>
