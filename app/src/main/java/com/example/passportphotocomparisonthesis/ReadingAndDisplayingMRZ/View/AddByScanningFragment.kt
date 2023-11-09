@@ -14,21 +14,28 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.passportphotocomparisonthesis.R
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.CountryRepository
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.Country
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.UserBACVeiwModel
 import com.example.passportphotocomparisonthesis.Utils.Camera.CameraHandler
 import com.example.passportphotocomparisonthesis.Utils.Camera.ImageAnalyzer
 import com.example.passportphotocomparisonthesis.Utils.DateParser
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import com.example.passportphotocomparisonthesis.Utils.Permissions.CameraPermissionRequest
 import com.example.passportphotocomparisonthesis.Utils.Permissions.PermissionRequester
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanningBinding
-
+import kotlinx.coroutines.runBlocking
 
 
 @ExperimentalGetImage class AddByScanningFragment : Fragment() {
 
     private lateinit var binding: FragmentAddByScanningBinding
     private lateinit var previewView: PreviewView
-    private lateinit var viewModel: CameraViewModel
+    private lateinit var viewModelCamera: CameraViewModel
+    private lateinit var userViewModel: UserBACVeiwModel
     private lateinit var cameraHandler: CameraHandler
     private lateinit var imageAnalyzer: ImageAnalyzer
     private lateinit var cameraPermissionRequester: PermissionRequester
@@ -50,7 +57,8 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         previewView = binding.camera
 
 
-        viewModel = ViewModelProvider(this).get(CameraViewModel::class.java)
+        viewModelCamera = ViewModelProvider(this).get(CameraViewModel::class.java)
+        userViewModel = ViewModelProvider(this).get(UserBACVeiwModel::class.java)
         return binding.root
     }
 
@@ -58,7 +66,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         super.onViewCreated(view, savedInstanceState)
 
         cameraHandler = CameraHandler(this, requireContext())
-        imageAnalyzer = ImageAnalyzer(viewModel)
+        imageAnalyzer = ImageAnalyzer(viewModelCamera)
 
         cameraPermissionRequester = CameraPermissionRequest(this, cameraRequestPermissionLauncher)
 
@@ -81,24 +89,38 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
     }
 
     private fun loadAndObserveViewModelVariables(){
-        viewModel.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
+        viewModelCamera.detectedDocumentNumber.observe(viewLifecycleOwner, Observer {
             if (it!=null)
                 binding.tvDocumentID.text = it
         })
 
-        viewModel.detectedBirthDate.observe(viewLifecycleOwner, Observer {
+        viewModelCamera.detectedBirthDate.observe(viewLifecycleOwner, Observer {
             if (it!=null)
                 binding.tvBirthDate.text = DateParser.parseDateFromRawToSlashFormat(it)
         })
 
-        viewModel.detectedExpirationDate.observe(viewLifecycleOwner, Observer {
+        viewModelCamera.detectedExpirationDate.observe(viewLifecycleOwner, Observer {
             if (it!=null){
                 binding.tvExpirationDate.text = DateParser.parseDateFromRawToSlashFormat(it)
             }
         })
 
-        viewModel.hasReceivedAll.observe(viewLifecycleOwner, Observer {
+        viewModelCamera.hasReceivedAll.observe(viewLifecycleOwner, Observer {
             if (it == true){
+                val country = getCountryNameInfoByAlpha3(viewModelCamera.detectedNationality.value)
+                val userBAC = UserBAC(
+                    viewModelCamera.detectedDocumentNumber.value!!,
+                    viewModelCamera.detectedExpirationDate.value!!,
+                    viewModelCamera.detectedBirthDate.value!!,
+                    viewModelCamera.detectedName.value,
+                    viewModelCamera.detectedGender.value,
+                    country?.name,
+                    country?.alpha2,
+                    viewModelCamera.detectedDocumentType.value
+                )
+
+                userViewModel.addUser(userBAC)
+
                 findNavController()?.navigate(R.id.action_addDocumentFragment_to_userMRZFragment)
             }
         })
@@ -109,5 +131,15 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanni
         imageAnalyzer.stop()
     }
 
+    private fun getCountryNameInfoByAlpha3(alpha3: String?): Country?{
+        val repository = CountryRepository(JsonReader(), JsonParser())
+        var countryAlpha2: Country? = null
+
+        runBlocking {
+            countryAlpha2 = alpha3?.let { repository.getCountryByFullName(it, requireContext()) }
+        }
+
+        return countryAlpha2
+    }
 
 }

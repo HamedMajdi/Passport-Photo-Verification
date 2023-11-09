@@ -8,20 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import androidx.core.view.get
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.passportphotocomparisonthesis.R
+import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.CountryRepository
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.StaticDataRepository
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.SpinnerData
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.UserBACVeiwModel
 import com.example.passportphotocomparisonthesis.Utils.DateParser
-import com.example.passportphotocomparisonthesis.Utils.IconGenerator.GenderImageGenerator
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
+import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddManuallyBinding
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.util.Calendar
 
 class AddManuallyFragment : Fragment() {
@@ -30,7 +34,6 @@ class AddManuallyFragment : Fragment() {
     private lateinit var coroutineScope: CoroutineScope
     private lateinit var userViewModel: UserBACVeiwModel
 
-    //    private lateinit var countriesDataForSpinner: List<SpinnerData>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,6 +55,8 @@ class AddManuallyFragment : Fragment() {
         }
 
         binding.editTextDocumentNumber.doOnTextChanged { text, start, before, count ->
+            if (!text.isNullOrBlank() && text.length==9)
+                binding.TILDocument.error = null
             setNextPageButtonOpacity()
         }
 
@@ -97,22 +102,24 @@ class AddManuallyFragment : Fragment() {
 
         binding.buttonAddToDocumentListDatabase.setOnClickListener {
             userViewModel = ViewModelProvider(this).get(UserBACVeiwModel::class.java)
-            (binding.spinnerCountry.selectedItem as SpinnerData).text
 
             val userBAC = UserBAC(
                 binding.editTextDocumentNumber.text.toString(),
                 DateParser.parseDateFromSlashFormatToRaw(binding.editTextExpirationDate.text.toString())!!,
                 DateParser.parseDateFromSlashFormatToRaw(binding.editTextBirthDate.text.toString())!!,
                 binding.editTextName.text.toString(),
-                "M",
-                "IRAN",
-                "IR",
-                3
+                getGender(),
+                getCountryFullName(),
+                getCountryAlpha2Name(),
+                getDocumentType()
             )
 
             userViewModel.addUser(userBAC)
+            findNavController()?.navigate(R.id.action_addDocumentFragment_to_userMRZFragment)
+
         }
     }
+
 
     private fun areAllNecessaryFieldsFilled(): Boolean {
         return checkBirthDateEditTextValueEntered() && checkExpirationDateEditTextValueEntered() && checkDocumentNumberDigitCountValidity()
@@ -186,6 +193,43 @@ class AddManuallyFragment : Fragment() {
             val countryAdapter = SpinnerAdapter(requireContext(), countriesDataForSpinner)
             binding.spinnerCountry.adapter = countryAdapter
         }
+
     }
 
+    private fun getGender(): String?{
+        when (binding.spinnerGender.selectedItemPosition){
+            1 -> return "M"
+            2 -> return "F"
+            3 -> return "<"
+            else -> return null
+        }
+    }
+
+    private fun getCountryFullName(): String? {
+        if (binding.spinnerCountry.selectedItemPosition != 0){
+            val selectedCountry = binding.spinnerCountry.selectedItem as com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.SpinnerData
+            return selectedCountry.text
+        }
+        return null
+    }
+
+    private fun getCountryAlpha2Name(): String? {
+        val selectedCountry = binding.spinnerCountry.selectedItem as SpinnerData
+        val repository = CountryRepository(JsonReader(), JsonParser())
+        var countryAlpha2: String? = null
+
+        runBlocking {
+            countryAlpha2 = repository.getCountryByFullName(selectedCountry.text, requireContext())?.alpha2
+        }
+
+        return countryAlpha2
+    }
+
+    private fun getDocumentType(): Int?{
+        when (binding.spinnerGender.selectedItemPosition){
+            1 -> return 1
+            2 -> return 3
+            else -> return null
+        }
+    }
 }

@@ -49,8 +49,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ivDocumentType"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvNameSurname"
-            app:srcCompat="@drawable/ic_male" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNameSurname" />
 
         <ImageView
             android:id="@+id/ivDocumentType"
@@ -60,8 +59,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ivFlag"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/ivGender"
-            app:layout_constraintTop_toTopOf="@+id/ivGender"
-            app:srcCompat="@drawable/ic_type3" />
+            app:layout_constraintTop_toTopOf="@+id/ivGender"/>
 
         <ImageView
             android:id="@+id/ivFlag"

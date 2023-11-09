@@ -17,7 +17,7 @@ interface UserBACDao {
     @Query(value = "SELECT * FROM user_bac WHERE document_id = :id")
     suspend fun getUser(id: String): UserBAC?
 
-    @Query("SELECT * FROM user_bac")
+    @Query("SELECT * FROM user_bac ORDER BY inserted_at DESC")
     suspend fun getAllUsers(): List<UserBAC>
 
     @Delete

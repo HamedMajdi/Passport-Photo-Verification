@@ -17,16 +17,22 @@ data class UserBAC(
     val birthDate: String,
 
     @ColumnInfo(name = "name_surname")
-    val nameSurname: String,
+    val nameSurname: String?,
 
-    val gender: String,
+    val gender: String?,
 
     @ColumnInfo(name = "nationality_full_name")
-    val nationalityFullName: String,
+    val nationalityFullName: String?,
 
     @ColumnInfo(name = "nationality_first_2_digits")
-    val nationalityFirst2Digits: String,
+    val nationalityFirst2Digits: String?,
 
     @ColumnInfo(name = "travel_document_type")
-    val travelDocumentType: Int
+    val travelDocumentType: Int?,
+
+    @ColumnInfo(name = "inserted_at")
+    val insertedAt: Long = System.currentTimeMillis(),
+
+    @ColumnInfo(name = "is_NFC_verified")
+    val isNFCVerified: Boolean = false
 )
