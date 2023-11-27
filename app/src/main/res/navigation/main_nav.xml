@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
     app:startDestination="@id/selectOrAddPassportFragment">
+
     <fragment
         android:id="@+id/selectOrAddPassportFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.SelectOrAddPassportFragment"
@@ -12,10 +13,10 @@
         <action
             android:id="@+id/action_selectOrAddPassportFragment_to_addDocumentFragment"
             app:destination="@id/addDocumentFragment"></action>
-
         <action
             android:id="@+id/action_selectOrAddPassportFragment_to_userMRZFragment"
             app:destination="@id/userMRZFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/modelTestFragment"

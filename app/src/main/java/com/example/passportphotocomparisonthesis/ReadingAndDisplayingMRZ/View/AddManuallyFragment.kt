@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.ViewUtils
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -20,6 +21,8 @@ import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewMod
 import com.example.passportphotocomparisonthesis.Utils.DateParser
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
+import com.example.passportphotocomparisonthesis.Utils.hideKeyboard
+import com.example.passportphotocomparisonthesis.Utils.showDatePickerDialog
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddManuallyBinding
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
@@ -51,7 +54,7 @@ class AddManuallyFragment : Fragment() {
         loadGenderSpinner()
 
         view.setOnClickListener {
-            hideKeyboard()
+            hideKeyboard(requireContext(), requireActivity())
         }
 
         binding.editTextDocumentNumber.doOnTextChanged { text, start, before, count ->
@@ -61,8 +64,8 @@ class AddManuallyFragment : Fragment() {
         }
 
         binding.editTextBirthDate.setOnClickListener {
-            hideKeyboard()
-            showDatePickerDialog {
+            hideKeyboard(requireContext(), requireActivity())
+            showDatePickerDialog(requireContext()) {
                 binding.TILBirth.error = null
                 binding.editTextBirthDate.setText(it)
                 setNextPageButtonOpacity()
@@ -70,8 +73,8 @@ class AddManuallyFragment : Fragment() {
         }
 
         binding.editTextExpirationDate.setOnClickListener {
-            hideKeyboard()
-            showDatePickerDialog {
+            hideKeyboard(requireContext(), requireActivity())
+            showDatePickerDialog(requireContext()) {
                 binding.TILExpiration.error = null
                 binding.editTextExpirationDate.setText(it)
                 setNextPageButtonOpacity()
@@ -115,7 +118,8 @@ class AddManuallyFragment : Fragment() {
             )
 
             userViewModel.addUser(userBAC)
-            findNavController()?.navigate(R.id.action_addDocumentFragment_to_userMRZFragment)
+            val action = AddDocumentFragmentDirections.actionAddDocumentFragmentToUserMRZFragment(userBAC)
+            findNavController().navigate(action)
 
         }
     }
@@ -152,26 +156,6 @@ class AddManuallyFragment : Fragment() {
             binding.buttonNextDataPiece.alpha = 0.3f
     }
 
-    private fun hideKeyboard(){
-        val inputMethodManager = requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        val view = requireActivity().currentFocus ?: View(activity)
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-    private fun showDatePickerDialog(onDatePicked: (String) -> Unit) {
-        val myCalendar: Calendar = Calendar.getInstance()
-
-        DatePickerDialog(
-            requireContext(),
-            { _, year, monthOfYear, dayOfMonth ->
-                val selectedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
-                onDatePicked(selectedDate)
-            },
-            myCalendar.get(Calendar.YEAR),
-            myCalendar.get(Calendar.MONTH),
-            myCalendar.get(Calendar.DAY_OF_MONTH)
-        ).show()
-    }
 
     private fun loadGenderSpinner() {
         val genderDataForSpinner = StaticDataRepository.getGenderOptions()

@@ -1,9 +1,12 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "user_bac")
 data class UserBAC(
     @PrimaryKey(autoGenerate = false)
@@ -34,5 +37,9 @@ data class UserBAC(
     val insertedAt: Long = System.currentTimeMillis(),
 
     @ColumnInfo(name = "is_NFC_verified")
-    val isNFCVerified: Boolean = false
-)
+    val isNFCVerified: Boolean = false,
+
+    @ColumnInfo(name = "user_image", typeAffinity = ColumnInfo.BLOB)
+    val userImage: ByteArray? = null
+
+) : Parcelable

@@ -12,4 +12,7 @@ class UserRepository(private val userBACDao: UserBACDao) {
     suspend fun insertUser(userBAC: UserBAC) = userBACDao.insert(userBAC)
 
     suspend fun deleteUser(userBAC: UserBAC) = userBACDao.deleteUser(userBAC)
+    suspend fun updateUser(userBAC: UserBAC) = userBACDao.updateUser(userBAC)
+
+
 }

@@ -1,6 +1,7 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -39,5 +40,11 @@ class UserBACVeiwModel(application: Application): AndroidViewModel(application) 
         }
     }
 
-
+    fun updateUser(userBAC: UserBAC){
+        coroutineScope.launch {
+            Log.d("UPDATE", "inside user viewmodel")
+            Log.d("UPDATE", userBAC.documentID)
+            userRepository.updateUser(userBAC)
+        }
+    }
 }
