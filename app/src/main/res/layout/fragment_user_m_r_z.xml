@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserMRZFragment">
+    tools:context=".NFCAndChipAuthentication.UserMRZFragment">
 
     <View
         android:id="@+id/view"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewStartVerification"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="190dp"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/nfc_verification_required"
         android:textColor="#4DEF0202"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewStartVerification"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

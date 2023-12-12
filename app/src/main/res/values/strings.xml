@@ -13,4 +13,15 @@
     <string name="document_number">Document Number</string>
     <string name="expiration_date">Expiration Date</string>
     <string name="name_surname">Name</string>
+    <string name="birth_date_error">Birth Date Must Be Selected</string>
+    <string name="expiration_date_error">Expiration Date Must Be Selected</string>
+    <string name="doc_number_error">Document Number Must be 9 Characters</string>
+    <string name="select_a_country">Select a country</string>
+    <string name="select_document_type">Select Document Type</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="id_card">ID Card</string>
+    <string name="passport">Passport</string>
 </resources>

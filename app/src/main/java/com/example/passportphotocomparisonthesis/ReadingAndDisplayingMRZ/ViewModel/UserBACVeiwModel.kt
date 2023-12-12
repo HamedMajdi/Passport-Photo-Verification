@@ -11,6 +11,7 @@ import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.Us
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class UserBACVeiwModel(application: Application): AndroidViewModel(application) {
 
@@ -42,9 +43,18 @@ class UserBACVeiwModel(application: Application): AndroidViewModel(application) 
 
     fun updateUser(userBAC: UserBAC){
         coroutineScope.launch {
-            Log.d("UPDATE", "inside user viewmodel")
-            Log.d("UPDATE", userBAC.documentID)
             userRepository.updateUser(userBAC)
+        }
+    }
+
+
+    fun deleteUser(userBAC: UserBAC) {
+        coroutineScope.launch {
+            userRepository.deleteUser(userBAC)
+            val updatedUsers = userRepository.getAllUsers()
+            withContext(Dispatchers.Main) {
+                _users.value = updatedUsers
+            }
         }
     }
 }

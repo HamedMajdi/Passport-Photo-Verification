@@ -27,6 +27,7 @@ import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import com.example.passportphotocomparisonthesis.Utils.Permissions.CameraPermissionRequest
 import com.example.passportphotocomparisonthesis.Utils.Permissions.PermissionRequester
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanningBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.runBlocking
 
 
@@ -108,7 +109,9 @@ import kotlinx.coroutines.runBlocking
         viewModelCamera.hasReceivedAll.observe(viewLifecycleOwner, Observer {
             if (it == true){
                 val country = getCountryNameInfoByAlpha3(viewModelCamera.detectedNationality.value)
+
                 val userBAC = UserBAC(
+                    id = null,
                     viewModelCamera.detectedDocumentNumber.value!!,
                     viewModelCamera.detectedExpirationDate.value!!,
                     viewModelCamera.detectedBirthDate.value!!,
@@ -141,5 +144,6 @@ import kotlinx.coroutines.runBlocking
 
         return countryAlpha2
     }
+
 
 }
