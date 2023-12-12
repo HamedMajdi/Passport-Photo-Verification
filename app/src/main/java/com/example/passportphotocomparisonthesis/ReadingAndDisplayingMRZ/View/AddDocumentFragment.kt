@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import com.example.passportphotocomparisonthesis.R
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddDocumentBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.tabs.TabLayout
 
 class AddDocumentFragment : Fragment() {

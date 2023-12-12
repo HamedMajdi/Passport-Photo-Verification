@@ -11,26 +11,27 @@ class StaticDataRepository {
 
     companion object {
 
-        fun getGenderOptions(): List<SpinnerData> {
+        fun getGenderOptions(context: Context): List<SpinnerData> {
             return listOf(
-                SpinnerData(R.drawable.ic_gender, "Select Gender"),
-                SpinnerData(R.drawable.ic_male, "Male"),
-                SpinnerData(R.drawable.ic_female, "Female"),
-                SpinnerData(R.drawable.ic_non_binary, "Other")
+                SpinnerData(R.drawable.ic_gender, context.getString(R.string.select_gender)),
+                SpinnerData(R.drawable.ic_male, context.getString(R.string.male)),
+                SpinnerData(R.drawable.ic_female, context.getString(R.string.female)),
+                SpinnerData(R.drawable.ic_non_binary, context.getString(R.string.other))
             )
         }
 
-        fun getDocumentTypeOptions(): List<SpinnerData> {
+        fun getDocumentTypeOptions(context: Context): List<SpinnerData> {
             return listOf(
-                SpinnerData(R.drawable.ic_document, "Select Document Type"),
-                SpinnerData(R.drawable.ic_id_card, "ID Card"),
-                SpinnerData(R.drawable.ic_passport, "Passport")
+                SpinnerData(R.drawable.ic_document, context.getString(R.string.select_document_type)),
+                SpinnerData(R.drawable.ic_id_card, context.getString(R.string.id_card)),
+                SpinnerData(R.drawable.ic_passport, context.getString(R.string.passport))
             )
         }
 
         suspend fun getCountryOptions(context: Context): List<SpinnerData> {
             val repository = CountryRepository(JsonReader(), JsonParser())
             val countries = repository.getAllCountries(context)
+
             val countryList =  countries.map { country ->
                 val imageName = if (country.alpha2.lowercase() == "do") "do1" else country.alpha2.lowercase()
 
@@ -39,7 +40,7 @@ class StaticDataRepository {
                 SpinnerData(imageResId, country.name)
             }
 
-            return listOf(SpinnerData(R.drawable.ic_country, "Select a country")) + countryList
+            return listOf(SpinnerData(R.drawable.ic_country, context.getString(R.string.select_a_country))) + countryList
         }
     }
 }

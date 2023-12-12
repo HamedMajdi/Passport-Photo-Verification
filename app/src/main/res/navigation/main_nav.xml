@@ -53,12 +53,30 @@
 
     <fragment
         android:id="@+id/userMRZFragment"
-        android:name="com.example.passportphotocomparisonthesis.UserMRZFragment"
+        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.UserMRZFragment"
         tools:layout="@layout/fragment_user_m_r_z">
 
         <argument
             android:name="user"
             app:argType="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC" />
+        <action
+            android:id="@+id/action_userMRZFragment_to_NFCVerificationFragment"
+            app:destination="@id/NFCVerificationFragment" />
 
     </fragment>
+    <dialog
+        android:id="@+id/NFCVerificationFragment"
+        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.NFCVerificationFragment"
+        android:label="fragment_n_f_c_verification"
+        tools:layout="@layout/fragment_n_f_c_verification" >
+        <argument
+            android:name="documentID"
+            app:argType="string" />
+        <argument
+            android:name="birthDate"
+            app:argType="string" />
+        <argument
+            android:name="expirationDate"
+            app:argType="string" />
+    </dialog>
 </navigation>

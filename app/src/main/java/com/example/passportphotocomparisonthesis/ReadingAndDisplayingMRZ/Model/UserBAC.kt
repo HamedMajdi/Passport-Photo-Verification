@@ -9,7 +9,9 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity(tableName = "user_bac")
 data class UserBAC(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
+    val id: Int? = null,
+
     @ColumnInfo(name = "document_id")
     val documentID: String,
 

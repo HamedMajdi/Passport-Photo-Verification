@@ -24,6 +24,7 @@ import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import com.example.passportphotocomparisonthesis.Utils.hideKeyboard
 import com.example.passportphotocomparisonthesis.Utils.showDatePickerDialog
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddManuallyBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,6 +33,9 @@ import kotlinx.coroutines.runBlocking
 import java.util.Calendar
 
 class AddManuallyFragment : Fragment() {
+
+    //TODO: Extract the methods, and use Views Util for spinner and other data
+    //TODO: COMPLETE REFACTOR REQUIRED
 
     private lateinit var binding: FragmentAddManuallyBinding
     private lateinit var coroutineScope: CoroutineScope
@@ -58,7 +62,7 @@ class AddManuallyFragment : Fragment() {
         }
 
         binding.editTextDocumentNumber.doOnTextChanged { text, start, before, count ->
-            if (!text.isNullOrBlank() && text.length==9)
+            if (!text.isNullOrBlank() && text.length == 9)
                 binding.TILDocument.error = null
             setNextPageButtonOpacity()
         }
@@ -84,15 +88,23 @@ class AddManuallyFragment : Fragment() {
         binding.buttonNextDataPiece.setOnClickListener {
 
             val birthCheck = checkBirthDateEditTextValueEntered()
-            setErrorMessage(binding.TILBirth, "Birth Date Must Be Selected", birthCheck)
+            setErrorMessage(binding.TILBirth, getString(R.string.birth_date_error), birthCheck)
 
             val expirationCheck = checkExpirationDateEditTextValueEntered()
-            setErrorMessage(binding.TILExpiration, "Expiration Date Must Be Selected", expirationCheck)
+            setErrorMessage(
+                binding.TILExpiration,
+                getString(R.string.expiration_date_error),
+                expirationCheck
+            )
 
             val documentCheck = checkDocumentNumberDigitCountValidity()
-            setErrorMessage(binding.TILDocument, "Document Number Must be 9 Characters", documentCheck)
+            setErrorMessage(
+                binding.TILDocument,
+                getString(R.string.doc_number_error),
+                documentCheck
+            )
 
-            if (birthCheck && expirationCheck && documentCheck){
+            if (birthCheck && expirationCheck && documentCheck) {
                 binding.layoutDataPart1.visibility = View.GONE
                 binding.layoutDataPart2.visibility = View.VISIBLE
             }
@@ -107,6 +119,7 @@ class AddManuallyFragment : Fragment() {
             userViewModel = ViewModelProvider(this).get(UserBACVeiwModel::class.java)
 
             val userBAC = UserBAC(
+                id = null,
                 binding.editTextDocumentNumber.text.toString(),
                 DateParser.parseDateFromSlashFormatToRaw(binding.editTextExpirationDate.text.toString())!!,
                 DateParser.parseDateFromSlashFormatToRaw(binding.editTextBirthDate.text.toString())!!,
@@ -118,7 +131,8 @@ class AddManuallyFragment : Fragment() {
             )
 
             userViewModel.addUser(userBAC)
-            val action = AddDocumentFragmentDirections.actionAddDocumentFragmentToUserMRZFragment(userBAC)
+            val action =
+                AddDocumentFragmentDirections.actionAddDocumentFragmentToUserMRZFragment(userBAC)
             findNavController().navigate(action)
 
         }
@@ -142,14 +156,14 @@ class AddManuallyFragment : Fragment() {
         return !(binding.editTextDocumentNumber.text.isNullOrBlank() || binding.editTextDocumentNumber.length() != 9)
     }
 
-    private fun setErrorMessage(view: TextInputLayout, message: String, isValid: Boolean){
+    private fun setErrorMessage(view: TextInputLayout, message: String, isValid: Boolean) {
         if (isValid)
             view.error = null
         else
             view.error = message
     }
 
-    private fun setNextPageButtonOpacity(){
+    private fun setNextPageButtonOpacity() {
         if (areAllNecessaryFieldsFilled())
             binding.buttonNextDataPiece.alpha = 1f
         else
@@ -158,13 +172,13 @@ class AddManuallyFragment : Fragment() {
 
 
     private fun loadGenderSpinner() {
-        val genderDataForSpinner = StaticDataRepository.getGenderOptions()
+        val genderDataForSpinner = StaticDataRepository.getGenderOptions(requireContext())
         val countryAdapter = SpinnerAdapter(requireContext(), genderDataForSpinner)
         binding.spinnerGender.adapter = countryAdapter
     }
 
     private fun loadDocumentTypeSpinner() {
-        val documentDataForSpinner = StaticDataRepository.getDocumentTypeOptions()
+        val documentDataForSpinner = StaticDataRepository.getDocumentTypeOptions(requireContext())
         val countryAdapter = SpinnerAdapter(requireContext(), documentDataForSpinner)
         binding.spinnerDocumentType.adapter = countryAdapter
     }
@@ -180,8 +194,8 @@ class AddManuallyFragment : Fragment() {
 
     }
 
-    private fun getGender(): String?{
-        when (binding.spinnerGender.selectedItemPosition){
+    private fun getGender(): String? {
+        when (binding.spinnerGender.selectedItemPosition) {
             1 -> return "M"
             2 -> return "F"
             3 -> return "<"
@@ -190,8 +204,9 @@ class AddManuallyFragment : Fragment() {
     }
 
     private fun getCountryFullName(): String? {
-        if (binding.spinnerCountry.selectedItemPosition != 0){
-            val selectedCountry = binding.spinnerCountry.selectedItem as com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.SpinnerData
+        if (binding.spinnerCountry.selectedItemPosition != 0) {
+            val selectedCountry =
+                binding.spinnerCountry.selectedItem as com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.SpinnerData
             return selectedCountry.text
         }
         return null
@@ -203,17 +218,20 @@ class AddManuallyFragment : Fragment() {
         var countryAlpha2: String? = null
 
         runBlocking {
-            countryAlpha2 = repository.getCountryByFullName(selectedCountry.text, requireContext())?.alpha2
+            countryAlpha2 =
+                repository.getCountryByFullName(selectedCountry.text, requireContext())?.alpha2
         }
 
         return countryAlpha2
     }
 
-    private fun getDocumentType(): Int?{
-        when (binding.spinnerGender.selectedItemPosition){
+
+    private fun getDocumentType(): Int? {
+        when (binding.spinnerGender.selectedItemPosition) {
             1 -> return 1
             2 -> return 3
             else -> return null
         }
     }
+    
 }
