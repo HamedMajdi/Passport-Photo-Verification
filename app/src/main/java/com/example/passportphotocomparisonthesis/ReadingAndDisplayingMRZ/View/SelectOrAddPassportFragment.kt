@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.app.AlertDialog
 import android.graphics.drawable.Drawable
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.lifecycle.Observer
@@ -58,7 +60,6 @@ class SelectOrAddPassportFragment : Fragment() {
         binding.addNewUser.setOnClickListener {
             findNavController().navigate(R.id.action_selectOrAddPassportFragment_to_addDocumentFragment)
         }
-
     }
 
     fun showDeleteConfirmationDialog(user: UserBAC) {
@@ -82,4 +83,5 @@ class SelectOrAddPassportFragment : Fragment() {
         super.onResume()
         userViewModel.getUsers()
     }
+
 }

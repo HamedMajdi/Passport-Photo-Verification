@@ -15,7 +15,9 @@
             app:destination="@id/addDocumentFragment"></action>
         <action
             android:id="@+id/action_selectOrAddPassportFragment_to_userMRZFragment"
-            app:destination="@id/userMRZFragment" />
+            app:destination="@id/userMRZFragment"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="false" />
 
     </fragment>
     <fragment
