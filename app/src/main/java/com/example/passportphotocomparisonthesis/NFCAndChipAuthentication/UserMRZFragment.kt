@@ -58,15 +58,6 @@ class UserMRZFragment : Fragment() {
         clearErrorMessageIfDocumentIsValid()
         loadSpinners()
 
-
-        binding.imageViewStartVerification.setOnClickListener {
-            val action = UserMRZFragmentDirections.actionUserMRZFragmentToNFCVerificationFragment(
-                binding.editTextDocumentNumber.text.toString(),
-                binding.editTextBirthDate.text.toString(),
-                binding.editTextExpirationDate.text.toString()
-            )
-            findNavController().navigate(action)
-        }
     }
 
     private fun checkIfUserIsNFCVerified(user: UserBAC): Boolean = user.isNFCVerified
@@ -129,6 +120,15 @@ class UserMRZFragment : Fragment() {
                 }
             }
         }
+
+        binding.imageViewStartVerification.setOnClickListener {
+            val action = UserMRZFragmentDirections.actionUserMRZFragmentToNFCVerificationFragment(
+                binding.editTextDocumentNumber.text.toString(),
+                binding.editTextBirthDate.text.toString(),
+                binding.editTextExpirationDate.text.toString()
+            )
+            findNavController().navigate(action)
+        }
     }
 
     private fun handleBackButtonPress() {
@@ -147,38 +147,16 @@ class UserMRZFragment : Fragment() {
     }
 
 
-//    private fun handleBackButtonPress(){
-//        requireActivity().onBackPressedDispatcher.addCallback {
-//            if (isAdded) {
-//                // In the above code, isAdded is a property of Fragment that returns true
-//                // if the fragment is currently added to its activity.
-//                // This ensures that you’re only accessing the ViewModel when the fragment is attached to the activity2.
-//
-//
-//                if (binding.editTextDocumentNumber.text.isNullOrEmpty() || binding.editTextDocumentNumber.text!!.length != 9) {
-//                    displayErrorMessageOnInputLayout(binding.TILDocument, getString(R.string.doc_number_error), false)
-//                } else {
-//                    // If validation passes, then call the super method to handle the back press
-//                    isEnabled = false
-//                    updateUser()
-//                    requireActivity().onBackPressed()
-//                }
-//            } else {
-//                isEnabled = false
-////                findNavController().popBackStack()
-////                findNavController().navigate(R.id.selectOrAddPassportFragment)
-//
-//                requireActivity().onBackPressed()
-//
-//            }
-//        }
-//    }
-
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("OnDestroy", "onDestroy: 1")
         if (binding.editTextDocumentNumber.text.isNullOrEmpty() || binding.editTextDocumentNumber.text!!.length != 9) {
+            Log.d("OnDestroy", "onDestroy: Inside if not available")
+
             displayErrorMessageOnInputLayout(binding.TILDocument, getString(R.string.doc_number_error), false)
         } else {
+            Log.d("OnDestroy", "onDestroy: Inside update user")
+
             // If validation passes, then call the super method to handle the back press
             updateUser()
         }
@@ -191,6 +169,7 @@ class UserMRZFragment : Fragment() {
                 displayErrorMessageOnInputLayout(binding.TILDocument, null, true)
         }
     }
+
 
     private fun loadSpinners() {
         SpinnerUtils.loadGenderSpinner(binding.spinnerGender, requireContext())

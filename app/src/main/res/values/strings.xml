@@ -24,4 +24,10 @@
     <string name="other">Other</string>
     <string name="id_card">ID Card</string>
     <string name="passport">Passport</string>
+    <string name="bac_key_explanation">A key will be generated from the Document Number, Expiration Date, and Birth Date in order to retrieve data from the NFC Chip contained within the document.</string>
+    <string name="bac_key_correct_ensure">Ensure that they are accurate!</string>
+    <string name="nfc_read_tip1">Ensure that NFC is enabled.\n</string>
+    <string name="nfc_read_tip2">Position the phone on the document and move it in a gentle manner until communication starts.</string>
+    <string name="nfc_read_tip3">Examine both the front and rear of the document.</string>
+
 </resources>

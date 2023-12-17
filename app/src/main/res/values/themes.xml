@@ -14,7 +14,7 @@
     </style>
 
     <style name="TextViewBold" parent="android:Widget.TextView">
-        <item name="android:textColor">#1B1B1B</item>
+        <item name="android:textColor">@color/color_text_important</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">@font/roboto_black</item>
@@ -25,5 +25,12 @@
         <item name="android:textSize">12sp</item>
         <item name="android:spacing">4dp</item>
         <item name="fontFamily">@font/allerta</item>
+    </style>
+
+    <style name="TextViewLowPriority" parent="android:Widget.TextView">
+        <item name="android:textColor">#838383</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:spacing">4dp</item>
+        <item name="fontFamily">@font/roboto_medium</item>
     </style>
 </resources>
