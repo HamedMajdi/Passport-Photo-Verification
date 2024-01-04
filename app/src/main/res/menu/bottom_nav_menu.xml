@@ -2,16 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/modelTestFragment"
-        android:title="Model Test"
+        android:title="@string/label_test_model_accuracy"
         android:icon="@drawable/ic_model_test"/>
 
     <item android:id="@+id/selectOrAddPassportFragment"
-        android:title="Query"
+        android:title="@string/label_verify_passport_id_card"
         android:icon="@drawable/ic_add_select_pass"/>
 
 
 
     <item android:id="@+id/settingsFragment"
-        android:title="Settings"
+        android:title="@string/label_settings"
         android:icon="@drawable/ic_settings"/>
 </menu>

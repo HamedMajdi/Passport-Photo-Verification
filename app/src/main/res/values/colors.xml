@@ -11,5 +11,17 @@
     <color name="color_NFC_not_verified">#85DD3A3A</color>
     <color name="color_NFC_verified">#8073D14B</color>
 
-    <color name="color_text_important">#1B1B1B</color>
+    <color name="color_recycler_item">#FFFFFF</color>
+
+    <color name="color_tab_selector">#EEEEEE</color>
+
+    <color name="color_bottom_navigation">#FFFFFF</color>
+
+    <color name="color_bottom_navigation_item_unselected">#252525</color>
+
+    <color name="text_color_bold">#1B1B1B</color>
+    <color name="text_color_regular">#2B2B2B</color>
+    <color name="text_color_Low_riority">#838383</color>
+
+
 </resources>

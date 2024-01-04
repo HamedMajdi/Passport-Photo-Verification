@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pasaport Fotoğraf Karşılaştırması (Tez)</string>
+    <!-- TODO: Bu yer tutucu metni kaldırın veya değiştirin -->
+    <string name="hello_blank_fragment">Merhaba boş parça</string>
+    <string name="label_verify_passport_id_card">Doğrula</string>
+    <string name="label_test_model_accuracy">Model Testı</string>
+    <string name="label_settings">Ayarlar</string>
+    <string name="document_number_text">Belge Numarası</string>
+    <string name="birth_date_text">Doğum Tarihi</string>
+    <string name="expiration_date_text">Son Kullanma Tarihi</string>
+    <string name="nfc_verification_required">NFC Doğrulaması Gerekli</string>
+    <string name="birth_date">Doğum Tarihi</string>
+    <string name="document_number">Belge Numarası</string>
+    <string name="expiration_date">Son Kullanma Tarihi</string>
+    <string name="name_surname">İsim</string>
+    <string name="birth_date_error">Doğum Tarihi Seçilmeli</string>
+    <string name="expiration_date_error">Son Kullanma Tarihi Seçilmeli</string>
+    <string name="doc_number_error">Belge Numarası 9 Karakter Olmalı</string>
+    <string name="select_a_country">Bir ülke seçin</string>
+    <string name="select_document_type">Belge Türünü Seçin</string>
+    <string name="select_gender">Cinsiyet Seçin</string>
+    <string name="male">Erkek</string>
+    <string name="female">Kadın</string>
+    <string name="other">Diğer</string>
+    <string name="id_card">Kimlik Kartı</string>
+    <string name="passport">Pasaport</string>
+    <string name="bac_key_explanation">Belge Numarası, Son Kullanma Tarihi ve Doğum Tarihi\'nden bir anahtar oluşturulacak ve belgedeki NFC Çipinden veri alınacak.</string>
+    <string name="bac_key_correct_ensure">Doğru olduklarından emin olun!</string>
+    <string name="nfc_read_tip1">NFC\'nin etkin olduğundan emin olun.\n</string>
+    <string name="nfc_read_tip2">Telefonu belge üzerine yerleştirin ve iletişim başlayana kadar nazikçe hareket ettirin.</string>
+    <string name="nfc_read_tip3">Belgenin hem önünü hem de arka tarafını inceleyin.</string>
+    <string name="face_partially_observed">Yüzün tespit edilmesinde bir sorun oldu. \n\nYüzün kısmen gizlendiği veya aşırı bir açıda olduğu görülüyor. \n\nLütfen telefonunuzu yüzünüzün tamamen kamerada görüneceği bir konuma koyun</string>
+    <string name="no_face_detected">Yüz tespit edilmedi. \n\nLütfen telefonunuzu yüzünüzün tamamen kamerada görüneceği şekilde ayarlayın</string>
+    <string name="more_than_one_face_detected">Birden fazla yüz tespit edildi. \n\nBu selfielerin bireysel olması gerekiyor. \n\nLütfen selfienizi tek başına çekin</string>
+    <string name="model">Model</string>
+    <string name="distance">Mesafe</string>
+    <string name="decision_boundary">Karar Sınırı</string>
+    <string name="output_size">Çıktı Boyutu</string>
+    <string name="input_size">Giriş Boyutu</string>
+    <string name="photos_are_matching">Fotoğraflar Eşleşiyor \n(Daha fazla bilgi için tıklayın)</string>
+    <string name="photos_don_t_match">Fotoğraflar Eşleşmiyor \n(Daha fazla bilgi için tıklayın)</string>
+    <string name="done">Tamam</string>
+    <string name="document_nfc_verified">Belge NFC Doğrulandı</string>
+    <string name="do_not_wear_a_mask">Maske Takmayın</string>
+    <string name="you_must_take_your_glasses_off">Gözlüklerinizi çıkarmalısınız</string>
+    <string name="do_not_wear_a_hat">Şapka Takmayın</string>
+    <string name="next">Sonraki</string>
+
+</resources>

@@ -32,9 +32,10 @@
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@drawable/bottom_navigation_view_selector"
         app:itemTextColor="@drawable/bottom_navigation_view_selector"
-        android:background="@color/white"
-        app:itemActiveIndicatorStyle="@color/white"
-        app:itemRippleColor="@color/white"
+        android:background="@color/color_bottom_navigation"
+        app:itemActiveIndicatorStyle="@color/color_bottom_navigation"
+        app:itemRippleColor="@color/color_bottom_navigation"
+
 
         />
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Comparación de fotos de pasaportes (Tesis)</string>
+    <!-- TODO: Eliminar o cambiar este texto de marcador de posición -->
+    <string name="hello_blank_fragment">Hola fragmento en blanco</string>
+    <string name="label_verify_passport_id_card">Verificar</string>
+    <string name="label_test_model_accuracy">Prueba de modelo</string>
+    <string name="label_settings">Configuraciones</string>
+    <string name="document_number_text">Número de documento</string>
+    <string name="birth_date_text">Fecha de nacimiento</string>
+    <string name="expiration_date_text">Fecha de vencimiento</string>
+    <string name="nfc_verification_required">Se requiere verificación NFC</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="document_number">Número de documento</string>
+    <string name="expiration_date">Fecha de vencimiento</string>
+    <string name="name_surname">Nombre</string>
+    <string name="birth_date_error">Debe seleccionar la fecha de nacimiento</string>
+    <string name="expiration_date_error">Debe seleccionar la fecha de vencimiento</string>
+    <string name="doc_number_error">El número de documento debe tener 9 caracteres</string>
+    <string name="select_a_country">Seleccione un país</string>
+    <string name="select_document_type">Seleccione el tipo de documento</string>
+    <string name="select_gender">Seleccione el género</string>
+    <string name="male">Masculino</string>
+    <string name="female">Femenino</string>
+    <string name="other">Otro</string>
+    <string name="id_card">Tarjeta de identificación</string>
+    <string name="passport">Pasaporte</string>
+    <string name="bac_key_explanation">Se generará una clave a partir del número de documento, la fecha de vencimiento y la fecha de nacimiento para recuperar datos del chip NFC contenido en el documento.</string>
+    <string name="bac_key_correct_ensure">¡Asegúrese de que sean correctos!</string>
+    <string name="nfc_read_tip1">Asegúrese de que el NFC esté habilitado.\n</string>
+    <string name="nfc_read_tip2">Posicione el teléfono en el documento y muévalo suavemente hasta que comience la comunicación.</string>
+    <string name="nfc_read_tip3">Examine tanto el frente como la parte trasera del documento.</string>
+    <string name="face_partially_observed">Hubo un problema al detectar la cara. \n\nParece que la cara está parcialmente oculta o en un ángulo extremo. \n\nPor favor, coloque el teléfono en una posición para que su cara aparezca completamente en la cámara</string>
+    <string name="no_face_detected">No se detectó ninguna cara. \n\nPor favor, ajuste su teléfono de manera que su cara aparezca completamente en la cámara</string>
+    <string name="more_than_one_face_detected">Se detectó más de una cara. \n\nEstos selfies deben ser individuales. \n\nPor favor, tome el selfie individualmente</string>
+    <string name="model">Modelo</string>
+    <string name="distance">Distancia</string>
+    <string name="decision_boundary">Límite de decisión</string>
+    <string name="output_size">Tamaño de salida</string>
+    <string name="input_size">Tamaño de entrada</string>
+    <string name="photos_are_matching">Las fotos coinciden \n(Haga clic para más información)</string>
+    <string name="photos_don_t_match">Las fotos no coinciden \n(Haga clic para más información)</string>
+    <string name="done">Hecho</string>
+    <string name="document_nfc_verified">Documento NFC verificado</string>
+    <string name="do_not_wear_a_mask">Debes quitarte las gafas</string>
+    <string name="you_must_take_your_glasses_off">Debes quitarte las gafas</string>
+    <string name="do_not_wear_a_hat">NO uses un sombrero</string>
+    <string name="next">Siguiente</string>
+
+</resources>

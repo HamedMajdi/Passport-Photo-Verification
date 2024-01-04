@@ -9,5 +9,15 @@
     <color name="color_primary_dark">#C58103</color>
     <color name="color_accent">#003f5c</color>
 
-    <color name="color_text_important">#C5C5C5</color>
+    <color name="color_recycler_item">#424242</color>
+
+    <color name="color_tab_selector">#111111</color>
+
+    <color name="color_bottom_navigation">#131313</color>
+
+    <color name="color_bottom_navigation_item_unselected">#D5D4D4</color>
+
+    <color name="text_color_bold">#E6E6E6</color>
+    <color name="text_color_regular">#D6D6D6</color>
+    <color name="text_color_Low_riority">#B1B1B1</color>
 </resources>

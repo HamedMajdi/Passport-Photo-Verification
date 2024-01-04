@@ -56,8 +56,7 @@ class CameraFragment : Fragment() {
         R.raw.photo_guide_glasses,
         R.raw.photo_guide_hat
     )
-    val texts =
-        listOf("Do NOT Wear a Mask", "You Must Take Your Glasses Off", "Do NOT Wear a Hat")
+    private lateinit var texts: List<String>
 
     var currentAnimationIndex = 0
 
@@ -80,6 +79,11 @@ class CameraFragment : Fragment() {
         binding.viewCamera.visibility = View.VISIBLE
         binding.viewResult.visibility = View.GONE
 
+        texts = listOf(
+            getString(R.string.do_not_wear_a_mask),
+            getString(R.string.you_must_take_your_glasses_off),
+            getString(R.string.do_not_wear_a_hat)
+        )
 
         bitmapTakenPhoto = args.documentPhoto
         viewModel.processFaceDetectionOnDocumentPhoto(bitmapTakenPhoto)

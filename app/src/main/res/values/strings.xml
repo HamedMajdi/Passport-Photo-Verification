@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Passport Photo Comparison (Thesis)</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="saved_language_key" translatable="false">SAVED_LANGUAGE</string>
+    <string name="saved_dark_mode_key" translatable="false">SAVED_DARK_MODE</string>
+    <string name="saved_model_key" translatable="false">SAVED_MODEL</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="label_verify_passport_id_card">Verify Passport/ID card</string>
-    <string name="label_test_model_accuracy">Test Model Accuracy</string>
+    <string name="label_verify_passport_id_card">Verify</string>
+    <string name="label_test_model_accuracy">Model Test</string>
     <string name="label_settings">Settings</string>
     <string name="document_number_text">Document Number</string>
     <string name="birth_date_text">Birth Date</string>
@@ -37,5 +41,13 @@
     <string name="decision_boundary">Decision Boundary</string>
     <string name="output_size">Output Size</string>
     <string name="input_size">Input Size</string>
+    <string name="photos_are_matching">Photos Are Matching \n(Click for more info)</string>
+    <string name="photos_don_t_match">Photos Don\'t Match \n(Click for more info)</string>
+    <string name="done">Done</string>
+    <string name="document_nfc_verified">Document NFC Verified</string>
+    <string name="do_not_wear_a_mask">Do NOT Wear a Mask</string>
+    <string name="you_must_take_your_glasses_off">You Must Take Your Glasses Off</string>
+    <string name="do_not_wear_a_hat">Do NOT Wear a Hat</string>
+    <string name="next">Next</string>
 
 </resources>
