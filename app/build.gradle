@@ -35,9 +35,13 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
+    buildFeatures {
+        mlModelBinding true
+    }
 }
 
 dependencies {
+
     def room_version = "2.5.2"
     def camerax_version = "1.2.3"
     def glide_version = "4.16.0"
@@ -79,11 +83,24 @@ dependencies {
     implementation 'com.google.mlkit:vision-common:17.3.0'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition-common:19.0.0'
     implementation 'com.google.android.gms:play-services-mlkit-text-recognition:19.0.0'
+    implementation 'com.google.mlkit:face-detection:16.1.5'
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.1.0'
+
 
     // Lottie Library
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    // JMRTD Library
+    implementation 'org.jmrtd:jmrtd:0.7.18'
+    implementation 'net.sf.scuba:scuba-sc-android:0.0.18'
+    implementation 'com.madgag.spongycastle:prov:1.54.0.0'
+    implementation 'com.github.mhshams:jnbis:1.1.0'
+    implementation 'org.bouncycastle:bcpkix-jdk15on:1.65' // do not update
+    implementation 'commons-io:commons-io:2.11.0'
 
-
+    // Tensorflow Lite Library
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
 
 }

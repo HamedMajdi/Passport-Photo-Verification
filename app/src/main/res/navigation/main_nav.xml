@@ -55,7 +55,7 @@
 
     <fragment
         android:id="@+id/userMRZFragment"
-        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.UserMRZFragment"
+        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.UserMRZFragment"
         tools:layout="@layout/fragment_user_m_r_z">
 
         <argument
@@ -64,13 +64,16 @@
         <action
             android:id="@+id/action_userMRZFragment_to_NFCVerificationFragment"
             app:destination="@id/NFCVerificationFragment" />
+        <action
+            android:id="@+id/action_userMRZFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
 
     </fragment>
-    <dialog
+    <fragment
         android:id="@+id/NFCVerificationFragment"
-        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.NFCVerificationFragment"
+        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.NFCVerificationFragment"
         android:label="fragment_n_f_c_verification"
-        tools:layout="@layout/fragment_n_f_c_verification" >
+        tools:layout="@layout/fragment_n_f_c_verification_non_dialog" >
         <argument
             android:name="documentID"
             app:argType="string" />
@@ -80,5 +83,37 @@
         <argument
             android:name="expirationDate"
             app:argType="string" />
-    </dialog>
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.passportphotocomparisonthesis.UserSelfieAndFaceDetection.View.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera">
+
+        <argument
+            android:name="documentPhoto"
+            app:argType="android.graphics.Bitmap" />
+        <action
+            android:id="@+id/action_cameraFragment_to_faceComparisonFragment"
+            app:destination="@id/faceComparisonFragment"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="false"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/faceComparisonFragment"
+        android:name="com.example.passportphotocomparisonthesis.FaceRecognition.FaceComparisonFragment"
+        android:label="fragment_face_comparison"
+        tools:layout="@layout/fragment_face_comparison">
+
+        <argument
+            android:name="documentPhoto"
+            app:argType="android.graphics.Bitmap" />
+
+        <argument
+            android:name="selfiePhoto"
+            app:argType="android.graphics.Bitmap" />
+
+    </fragment>
 </navigation>

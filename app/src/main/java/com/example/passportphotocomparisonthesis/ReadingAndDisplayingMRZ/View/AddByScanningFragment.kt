@@ -20,14 +20,13 @@ import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.U
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.CameraViewModel
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.UserBACVeiwModel
 import com.example.passportphotocomparisonthesis.Utils.Camera.CameraHandler
-import com.example.passportphotocomparisonthesis.Utils.Camera.ImageAnalyzer
+import com.example.passportphotocomparisonthesis.Utils.Camera.MRZCodeImageAnalyzer
 import com.example.passportphotocomparisonthesis.Utils.DateParser
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import com.example.passportphotocomparisonthesis.Utils.Permissions.CameraPermissionRequest
 import com.example.passportphotocomparisonthesis.Utils.Permissions.PermissionRequester
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanningBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.runBlocking
 
 
@@ -38,7 +37,7 @@ import kotlinx.coroutines.runBlocking
     private lateinit var viewModelCamera: CameraViewModel
     private lateinit var userViewModel: UserBACVeiwModel
     private lateinit var cameraHandler: CameraHandler
-    private lateinit var imageAnalyzer: ImageAnalyzer
+    private lateinit var mrzCodeImageAnalyzer: MRZCodeImageAnalyzer
     private lateinit var cameraPermissionRequester: PermissionRequester
 
     private val cameraRequestPermissionLauncher =
@@ -67,7 +66,7 @@ import kotlinx.coroutines.runBlocking
         super.onViewCreated(view, savedInstanceState)
 
         cameraHandler = CameraHandler(this, requireContext())
-        imageAnalyzer = ImageAnalyzer(viewModelCamera)
+        mrzCodeImageAnalyzer = MRZCodeImageAnalyzer(viewModelCamera)
 
         cameraPermissionRequester = CameraPermissionRequest(this, cameraRequestPermissionLauncher)
 
@@ -86,7 +85,7 @@ import kotlinx.coroutines.runBlocking
 
     fun startCamera() {
         cameraHandler.startCamera(previewView.surfaceProvider, CameraSelector.DEFAULT_BACK_CAMERA)
-        cameraHandler.setImageAnalyzer(imageAnalyzer)
+        cameraHandler.setImageAnalyzer(mrzCodeImageAnalyzer)
     }
 
     private fun loadAndObserveViewModelVariables(){
@@ -131,7 +130,7 @@ import kotlinx.coroutines.runBlocking
 
     override fun onDestroy() {
         super.onDestroy()
-        imageAnalyzer.stop()
+        mrzCodeImageAnalyzer.stop()
     }
 
     private fun getCountryNameInfoByAlpha3(alpha3: String?): Country?{

@@ -42,6 +42,9 @@ data class UserBAC(
     val isNFCVerified: Boolean = false,
 
     @ColumnInfo(name = "user_image", typeAffinity = ColumnInfo.BLOB)
-    val userImage: ByteArray? = null
+    val userImage: ByteArray? = null,
+
+    @ColumnInfo(name = "user_image_mime_type")
+    val imageMimeType: String? = null
 
 ) : Parcelable

@@ -29,5 +29,13 @@
     <string name="nfc_read_tip1">Ensure that NFC is enabled.\n</string>
     <string name="nfc_read_tip2">Position the phone on the document and move it in a gentle manner until communication starts.</string>
     <string name="nfc_read_tip3">Examine both the front and rear of the document.</string>
+    <string name="face_partially_observed">There was a problem detecting the face. \n\nIt seems like face is partially obscured or at an extreme angle. \n\nPlease put the phone in a position so that your face fully appears inside the camera</string>
+    <string name="no_face_detected">No face detected. \n\nPlease adjust your phone in a way that your face fully appears in the camera</string>
+    <string name="more_than_one_face_detected">More than one face detected. \n\nThese selfies are meant to be individual. \n\nPlease take the selfie individually</string>
+    <string name="model">Model</string>
+    <string name="distance">Distane</string>
+    <string name="decision_boundary">Decision Boundary</string>
+    <string name="output_size">Output Size</string>
+    <string name="input_size">Input Size</string>
 
 </resources>

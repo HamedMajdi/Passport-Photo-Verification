@@ -4,49 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NFCAndChipAuthentication.UserMRZFragment">
+    tools:context=".NFCAndChipAuthentication.Veiw.UserMRZFragment">
 
-    <View
-        android:id="@+id/view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="#85DD3A3A"
+        android:layout_height="290dp"
+        android:id="@+id/topView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible">
 
-    <ImageView
-        android:id="@+id/imageViewStartVerification"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="190dp"
-        android:background="@drawable/circular_background"
-        android:padding="24dp"
-        android:src="@drawable/ic_nfc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewVerified"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="visible">
 
-    <TextView
-        android:id="@+id/tvNFCVerificationRequired"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nfc_verification_required"
-        android:textColor="#4DEF0202"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewStartVerification"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@color/color_NFC_verified"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                app:cardCornerRadius="400dp">
+
+                <ImageView
+                    android:id="@+id/imageViewUserPhotoDocument"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="180dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="32dp"
+                app:cardBackgroundColor="#73D14B"
+                app:cardCornerRadius="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Document NFC Verified"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <ImageView
+                android:id="@+id/imageViewStartCamera"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="190dp"
+                android:background="@drawable/circular_background"
+                android:padding="24dp"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewNotVerified"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@color/color_NFC_not_verified"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageViewStartVerification"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="190dp"
+                android:background="@drawable/circular_background"
+                android:padding="24dp"
+                android:src="@drawable/ic_nfc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/view" />
+
+            <TextView
+                android:id="@+id/tvNFCVerificationRequired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nfc_verification_required"
+                android:textColor="#4DEF0202"
+                app:layout_constraintBottom_toTopOf="@+id/imageViewStartVerification"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="48dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
         android:scrollbarThumbVertical="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view">
+        app:layout_constraintTop_toBottomOf="@id/topView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -164,7 +260,6 @@
                 app:layout_constraintTop_toBottomOf="@id/TILName" />
 
             <Spinner
-
                 android:id="@+id/spinnerCountry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,6 +285,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

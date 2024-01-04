@@ -6,6 +6,7 @@ import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.C
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.CountryDao
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonParser
 import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
+
 /*
 Repository: On the other hand, the Repository pattern is a kind of container where data access logic is stored.
 It hides the details of data access logic from business logic.
@@ -18,15 +19,17 @@ Data is also received from the client as a business object and stored in the rep
 
 
  */
-class CountryRepository(private val jsonReader: JsonReader,
-                        private val jsonParser: JsonParser
-                        ): CountryDao {
+class CountryRepository(
+    private val jsonReader: JsonReader,
+    private val jsonParser: JsonParser
+) : CountryDao {
 
     private var countries: List<Country>? = null
 
     override suspend fun getCountryByAlpha3(alpha3: String, context: Context): Country? {
         if (countries == null) {
-            countries = jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
+            countries =
+                jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
         }
         return countries?.find { it.alpha3 == alpha3 }
     }
@@ -34,15 +37,18 @@ class CountryRepository(private val jsonReader: JsonReader,
 
     suspend fun getAllCountries(context: Context): List<Country> {
         if (countries == null) {
-            countries = jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
+            countries =
+                jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
         }
         return countries!!
     }
 
     suspend fun getCountryByFullName(countryFullName: String, context: Context): Country? {
         if (countries == null) {
-            countries = jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
+            countries =
+                jsonParser.parseCountries(jsonReader.readJsonFromRaw(context, R.raw.countries_info))
         }
         return countries?.find { it.name == countryFullName }
 
-    } }
+    }
+}
