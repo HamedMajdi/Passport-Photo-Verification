@@ -36,6 +36,7 @@ class FaceComparisonFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentFaceComparisonBinding.inflate(inflater, container, false)
+        readModelFromSharedPref()
         return binding.root
     }
 
@@ -94,6 +95,8 @@ class FaceComparisonFragment : Fragment() {
         dialog!!.show()
 
     }
+
+    
 
     // Function to calculate Euclidean distance
     fun euclideanDistance(embedding1: TensorBuffer, embedding2: TensorBuffer): Float {

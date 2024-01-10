@@ -2,7 +2,6 @@ package com.example.passportphotocomparisonthesis.View
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -83,11 +82,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setLocale(lang: String) {
-        val myLocale = Locale(lang)
-        Locale.setDefault(myLocale)
-        val config = Configuration()
-        config.locale = myLocale
-        resources.updateConfiguration(config, resources.displayMetrics)
-    }
 }

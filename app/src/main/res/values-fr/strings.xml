@@ -46,5 +46,13 @@
     <string name="you_must_take_your_glasses_off">Vous devez enlever vos lunettes</string>
     <string name="do_not_wear_a_hat">Ne portez PAS de chapeau</string>
     <string name="next">Suivant</string>
+    <string name="select_language">Sélectionnez la langue</string>
+    <string name="select_recognition_model">Sélectionnez le modèle de reconnaissance</string>
+    <string name="select_theme">Sélectionnez le thème</string>
+
+    <string name="tp">Taux de vrais positifs</string>
+    <string name="tn">Taux négatif réel</string>
+    <string name="fp">Taux de faux positifs</string>
+    <string name="fn">Taux de faux négatifs</string>
 
 </resources>

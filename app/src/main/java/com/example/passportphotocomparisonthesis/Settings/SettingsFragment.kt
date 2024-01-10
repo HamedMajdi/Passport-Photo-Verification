@@ -32,9 +32,9 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val languageImages = intArrayOf(R.drawable.gb, R.drawable.fr, R.drawable.tr, R.drawable.es)
-        languages = arrayOf("English", "French", "Turkish", "Spanish")
-        languagesCode = arrayOf("en", "fr", "tr", "es")
+        val languageImages = intArrayOf(R.drawable.gb, R.drawable.tr, R.drawable.de, R.drawable.fr, R.drawable.es)
+        languages = arrayOf("English", "Turkish", "German", "French", "Spanish")
+        languagesCode = arrayOf("en", "tr", "de", "fr", "es")
         binding.languageSpinner.adapter = SpinnerAdapter(requireContext(), languageImages, languages)
 
         val themeImages = intArrayOf(R.drawable.ic_light, R.drawable.ic_dark, R.drawable.ic_system)
@@ -60,6 +60,7 @@ class SettingsFragment : Fragment() {
                             "English" -> applyLanguage("en")
                             "French" -> applyLanguage("fr")
                             "Turkish" -> applyLanguage("tr")
+                            "German" -> applyLanguage("de")
                             "Spanish" -> applyLanguage("es")
                         }
                     }

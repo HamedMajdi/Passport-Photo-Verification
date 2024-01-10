@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Language"
+        android:text="@string/select_language"
         android:textSize="18sp"
         android:textStyle="bold"/>
 
@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Theme"
+        android:text="@string/select_theme"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"/>
@@ -36,7 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Recognition Model"
+        android:text="@string/select_recognition_model"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp"/>

@@ -46,5 +46,13 @@
     <string name="you_must_take_your_glasses_off">Sie müssen Ihre Brille abnehmen</string>
     <string name="do_not_wear_a_hat">Tragen Sie KEINEN Hut</string>
     <string name="next">Nächster</string>
+    <string name="select_language">Sprache auswählen</string>
+    <string name="select_recognition_model">Erkennungsmodell auswählen</string>
+    <string name="select_theme">Thema auswählen</string>
+
+    <string name="tp">Wahre Positivrate</string>
+    <string name="tn">Wahre Negativrate</string>
+    <string name="fp">Falsch-Positiv-Rate</string>
+    <string name="fn">Falsch-Negativ-Rate</string>
 
 </resources>
