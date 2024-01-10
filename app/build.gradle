@@ -103,4 +103,7 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
 
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

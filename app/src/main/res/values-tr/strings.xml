@@ -46,5 +46,12 @@
     <string name="you_must_take_your_glasses_off">Gözlüklerinizi çıkarmalısınız</string>
     <string name="do_not_wear_a_hat">Şapka Takmayın</string>
     <string name="next">Sonraki</string>
+    <string name="select_language">Dil Seçin</string>
+    <string name="select_recognition_model">Tanıma Modelini Seçin</string>
+    <string name="select_theme">Tema Seçin</string>
 
+    <string name="tp">Gerçek Pozitif Oranı</string>
+    <string name="tn">Gerçek Negatif Oranı</string>
+    <string name="fp">Yanlış Pozitif Oranı</string>
+    <string name="fn">Yanlış Negatif Oranı</string>
 </resources>
