@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/query_nav"
+    app:startDestination="@id/selectOrAddPassportFragment">
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        android:name="com.example.passportphotocomparisonthesis.UserSelfieAndFaceDetection.View.CameraFragment"
+        android:label="fragment_camera"
+        tools:layout="@layout/fragment_camera">
+
+        <argument
+            android:name="documentPhoto"
+            app:argType="android.graphics.Bitmap" />
+        <action
+            android:id="@+id/action_cameraFragment_to_faceComparisonFragment"
+            app:destination="@id/faceComparisonFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/faceComparisonFragment"
+        android:name="com.example.passportphotocomparisonthesis.FaceRecognition.FaceComparisonFragment"
+        android:label="fragment_face_comparison"
+        tools:layout="@layout/fragment_face_comparison">
+
+        <argument
+            android:name="documentPhoto"
+            app:argType="android.graphics.Bitmap" />
+
+        <argument
+            android:name="selfiePhoto"
+            app:argType="android.graphics.Bitmap" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/userMRZFragment"
+        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.UserMRZFragment"
+        tools:layout="@layout/fragment_user_m_r_z">
+
+        <argument
+            android:name="user"
+            app:argType="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC" />
+        <action
+            android:id="@+id/action_userMRZFragment_to_NFCVerificationFragment"
+            app:destination="@id/NFCVerificationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_userMRZFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+    <action
+        android:id="@+id/action_selectOrAddPassportFragment_to_addDocumentFragment"
+        app:destination="@id/addDocumentFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right">
+
+    </action>
+    <fragment
+        android:id="@+id/NFCVerificationFragment"
+        android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.NFCVerificationFragment"
+        android:label="fragment_n_f_c_verification"
+        tools:layout="@layout/fragment_n_f_c_verification_non_dialog">
+        <argument
+            android:name="documentID"
+            app:argType="string" />
+        <argument
+            android:name="birthDate"
+            app:argType="string" />
+        <argument
+            android:name="expirationDate"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDocumentFragment"
+        android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddDocumentFragment"
+        tools:layout="@layout/fragment_add_document">
+
+        <action
+            android:id="@+id/action_addDocumentFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <action
+        android:id="@+id/action_userMRZFragment_to_NFCVerificationFragment"
+        app:destination="@id/NFCVerificationFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_selectOrAddPassportFragment_to_userMRZFragment"
+        app:destination="@id/userMRZFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:popUpTo="@id/selectOrAddPassportFragment"
+        app:popUpToInclusive="false" />
+    <action
+        android:id="@+id/action_addDocumentFragment_to_userMRZFragment"
+        app:destination="@id/userMRZFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:popUpTo="@id/selectOrAddPassportFragment"
+        app:popUpToInclusive="false" />
+    <action
+        android:id="@+id/action_userMRZFragment_to_cameraFragment"
+        app:destination="@id/cameraFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <fragment
+        android:id="@+id/addByScanningFragment"
+        android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddByScanningFragment"
+        tools:layout="@layout/fragment_add_by_scanning">
+
+        <action
+            android:id="@+id/action_addByScanningFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <action
+        android:id="@+id/action_addByScanningFragment_to_userMRZFragment"
+        app:destination="@id/userMRZFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <fragment
+        android:id="@+id/selectOrAddPassportFragment"
+        android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.SelectOrAddPassportFragment"
+        android:label="@string/label_verify_passport_id_card"
+        tools:layout="@layout/fragment_select_or_add_passport">
+        <action
+            android:id="@+id/action_selectOrAddPassportFragment_to_addDocumentFragment"
+            app:destination="@id/addDocumentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right">
+
+        </action>
+        <action
+            android:id="@+id/action_selectOrAddPassportFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+</navigation>

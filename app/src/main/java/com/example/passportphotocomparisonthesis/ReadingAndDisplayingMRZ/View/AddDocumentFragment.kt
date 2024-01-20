@@ -78,4 +78,10 @@ class AddDocumentFragment : Fragment() {
         tab?.view?.background = null
     }
 
+    override fun onResume() {
+        super.onResume()
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView?.selectedItemId = R.id.selectOrAddPassportFragment
+    }
+
 }

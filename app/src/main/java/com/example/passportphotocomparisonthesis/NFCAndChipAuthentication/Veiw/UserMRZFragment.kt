@@ -171,16 +171,21 @@ class UserMRZFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (binding.editTextDocumentNumber.text.isNullOrEmpty() || binding.editTextDocumentNumber.text!!.length != 9) {
+        try {
+            if (binding.editTextDocumentNumber.text.isNullOrEmpty() || binding.editTextDocumentNumber.text!!.length != 9) {
 
-            displayErrorMessageOnInputLayout(
-                binding.TILDocument,
-                getString(R.string.doc_number_error),
-                false
-            )
-        } else {
-            updateUser()
+                displayErrorMessageOnInputLayout(
+                    binding.TILDocument,
+                    getString(R.string.doc_number_error),
+                    false
+                )
+            } else {
+                updateUser()
+            }
+        } catch (e: Exception) {
+            // Handle the error
         }
+
     }
 
 

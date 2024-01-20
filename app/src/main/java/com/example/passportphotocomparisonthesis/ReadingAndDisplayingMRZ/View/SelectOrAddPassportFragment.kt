@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -15,6 +14,7 @@ import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.O
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.UserBAC
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.ViewModel.UserBACVeiwModel
 import com.example.passportphotocomparisonthesis.databinding.FragmentSelectOrAddPassportBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class SelectOrAddPassportFragment : Fragment() {
 
     private val adapter = RecyclerViewAdapter(arrayListOf(), object : OnItemClickListener {
@@ -35,8 +35,7 @@ class SelectOrAddPassportFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSelectOrAddPassportBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
 

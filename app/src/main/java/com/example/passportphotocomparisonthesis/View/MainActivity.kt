@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.NFCVerificationFragment
 import com.example.passportphotocomparisonthesis.R
@@ -42,25 +41,12 @@ class MainActivity : AppCompatActivity() {
         Settings.applyDarkMode(savedMode)
 
 
-
-
-
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         navController = findNavController(R.id.fragmentContainerView)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.selectOrAddPassportFragment,
-                R.id.modelTestFragment,
-                R.id.settingsFragment
-            )
-        )
 
         binding.bottomNavigationView.setupWithNavController(navController)
-//        setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
 

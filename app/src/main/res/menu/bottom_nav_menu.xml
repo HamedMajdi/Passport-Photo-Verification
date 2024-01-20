@@ -5,7 +5,7 @@
         android:title="@string/label_test_model_accuracy"
         android:icon="@drawable/ic_model_test"/>
 
-    <item android:id="@+id/selectOrAddPassportFragment"
+    <item android:id="@+id/queryFragmentNavHostContainer"
         android:title="@string/label_verify_passport_id_card"
         android:icon="@drawable/ic_add_select_pass"/>
 

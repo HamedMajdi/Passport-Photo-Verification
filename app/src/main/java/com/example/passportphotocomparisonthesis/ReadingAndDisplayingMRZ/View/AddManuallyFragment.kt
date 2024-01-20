@@ -1,15 +1,11 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
-import android.app.Activity
-import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.widget.ViewUtils
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.passportphotocomparisonthesis.R
@@ -30,7 +26,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import java.util.Calendar
 
 class AddManuallyFragment : Fragment() {
 
@@ -232,6 +227,12 @@ class AddManuallyFragment : Fragment() {
             2 -> return 3
             else -> return null
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView?.selectedItemId = R.id.selectOrAddPassportFragment
     }
     
 }
