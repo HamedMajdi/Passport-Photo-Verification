@@ -27,6 +27,7 @@ import com.example.passportphotocomparisonthesis.Utils.JSON.JsonReader
 import com.example.passportphotocomparisonthesis.Utils.Permissions.CameraPermissionRequest
 import com.example.passportphotocomparisonthesis.Utils.Permissions.PermissionRequester
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddByScanningBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.runBlocking
 
 
@@ -142,6 +143,12 @@ import kotlinx.coroutines.runBlocking
         }
 
         return countryAlpha2
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val bottomNavigationView = activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView?.selectedItemId = R.id.selectOrAddPassportFragment
     }
 
 
