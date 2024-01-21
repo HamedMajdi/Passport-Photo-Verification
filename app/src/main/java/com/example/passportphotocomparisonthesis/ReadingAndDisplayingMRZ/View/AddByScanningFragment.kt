@@ -12,7 +12,7 @@ import androidx.camera.view.PreviewView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.example.passportphotocomparisonthesis.R
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.CountryRepository
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Model.Country
@@ -124,7 +124,12 @@ import kotlinx.coroutines.runBlocking
 
                 userViewModel.addUser(userBAC)
 
-                findNavController()?.navigate(R.id.action_addDocumentFragment_to_userMRZFragment)
+                val view = requireView()
+                val navController = view.findNavController()
+                val action = AddDocumentFragmentDirections.actionAddDocumentFragmentToUserMRZFragment(userBAC)
+                navController?.navigate(action)
+
+//                findNavController()?.navigate(R.id.action_addDocumentFragment_to_userMRZFragment)
             }
         })
     }

@@ -7,7 +7,7 @@
 <!--    <color name="color_accent">#00BCD4</color> -->
     <color name="color_primary">#ffa600</color>
     <color name="color_primary_dark">#C58103</color>
-        <color name="color_accent">#003f5c</color>
+    <color name="color_accent">#003f5c</color>
     <color name="color_NFC_not_verified">#85DD3A3A</color>
     <color name="color_NFC_verified">#8073D14B</color>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Passport Photo Comparison (Thesis)</string>
+    <string name="app_name">Document Face Verification</string>
 
     <string name="saved_language_key" translatable="false">SAVED_LANGUAGE</string>
     <string name="saved_dark_mode_key" translatable="false">SAVED_DARK_MODE</string>
@@ -58,5 +58,7 @@
     <string name="tn">True Negative Rate</string>
     <string name="fp">False Positive Rate</string>
     <string name="fn">False Negative Rate</string>
+    <string name="scanning">Scanning</string>
+    <string name="manual">Manual</string>
 
 </resources>

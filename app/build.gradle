@@ -12,7 +12,7 @@ android {
     viewBinding{enable = true}
 
     defaultConfig {
-        applicationId "com.example.passportphotocomparisonthesis"
+        applicationId "com.hamedmajdi.documentfaceverification"
         minSdk 24
         targetSdk 34
         versionCode 1

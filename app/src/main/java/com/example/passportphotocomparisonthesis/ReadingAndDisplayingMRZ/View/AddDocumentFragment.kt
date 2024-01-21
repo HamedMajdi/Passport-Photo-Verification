@@ -1,13 +1,12 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
 import android.content.res.Resources
-import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.example.passportphotocomparisonthesis.R
 import com.example.passportphotocomparisonthesis.databinding.FragmentAddDocumentBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -33,8 +32,8 @@ class AddDocumentFragment : Fragment() {
         val fragmentManual = AddManuallyFragment()
 
         // Add tabs
-        tabLayout.addTab(tabLayout.newTab().setText("Scanning"))
-        tabLayout.addTab(tabLayout.newTab().setText("Manual"))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.scanning)))
+        tabLayout.addTab(tabLayout.newTab().setText(getString(R.string.manual)))
 
         // Set initial selected tab
         replaceFragment(fragmentScanning)

@@ -1,5 +1,6 @@
 package com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.example.passportphotocomparisonthesis.R
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.CountryRepository
 import com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.Data.StaticDataRepository
@@ -45,6 +46,7 @@ class AddManuallyFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -125,10 +127,17 @@ class AddManuallyFragment : Fragment() {
                 getDocumentType()
             )
 
+
             userViewModel.addUser(userBAC)
-            val action =
-                AddDocumentFragmentDirections.actionAddDocumentFragmentToUserMRZFragment(userBAC)
-            findNavController().navigate(action)
+
+
+
+
+
+            val view = requireView()
+            val navController = view.findNavController()
+            val action = AddDocumentFragmentDirections.actionAddDocumentFragmentToUserMRZFragment(userBAC)
+            navController?.navigate(action)
 
         }
     }

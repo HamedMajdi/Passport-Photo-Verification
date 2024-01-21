@@ -25,6 +25,8 @@
             app:popUpToInclusive="false" />
 
     </fragment>
+
+
     <fragment
         android:id="@+id/faceComparisonFragment"
         android:name="com.example.passportphotocomparisonthesis.FaceRecognition.FaceComparisonFragment"
@@ -40,6 +42,8 @@
             app:argType="android.graphics.Bitmap" />
 
     </fragment>
+
+
     <fragment
         android:id="@+id/userMRZFragment"
         android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.UserMRZFragment"
@@ -64,15 +68,7 @@
             app:popExitAnim="@anim/slide_out_right" />
 
     </fragment>
-    <action
-        android:id="@+id/action_selectOrAddPassportFragment_to_addDocumentFragment"
-        app:destination="@id/addDocumentFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right">
 
-    </action>
     <fragment
         android:id="@+id/NFCVerificationFragment"
         android:name="com.example.passportphotocomparisonthesis.NFCAndChipAuthentication.Veiw.NFCVerificationFragment"
@@ -88,6 +84,7 @@
             android:name="expirationDate"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/addDocumentFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddDocumentFragment"
@@ -103,38 +100,8 @@
             app:popUpTo="@id/selectOrAddPassportFragment"
             app:popUpToInclusive="false" />
     </fragment>
-    <action
-        android:id="@+id/action_userMRZFragment_to_NFCVerificationFragment"
-        app:destination="@id/NFCVerificationFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right" />
-    <action
-        android:id="@+id/action_selectOrAddPassportFragment_to_userMRZFragment"
-        app:destination="@id/userMRZFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right"
-        app:popUpTo="@id/selectOrAddPassportFragment"
-        app:popUpToInclusive="false" />
-    <action
-        android:id="@+id/action_addDocumentFragment_to_userMRZFragment"
-        app:destination="@id/userMRZFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right"
-        app:popUpTo="@id/selectOrAddPassportFragment"
-        app:popUpToInclusive="false" />
-    <action
-        android:id="@+id/action_userMRZFragment_to_cameraFragment"
-        app:destination="@id/cameraFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right" />
+
+
     <fragment
         android:id="@+id/addByScanningFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddByScanningFragment"
@@ -148,13 +115,8 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
-    <action
-        android:id="@+id/action_addByScanningFragment_to_userMRZFragment"
-        app:destination="@id/userMRZFragment"
-        app:enterAnim="@anim/slide_in_right"
-        app:exitAnim="@anim/slide_out_left"
-        app:popEnterAnim="@anim/slide_in_left"
-        app:popExitAnim="@anim/slide_out_right" />
+
+
     <fragment
         android:id="@+id/selectOrAddPassportFragment"
         android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.SelectOrAddPassportFragment"
@@ -180,4 +142,21 @@
             app:popUpToInclusive="false" />
 
     </fragment>
+    <fragment
+        android:id="@+id/addManuallyFragment"
+        android:name="com.example.passportphotocomparisonthesis.ReadingAndDisplayingMRZ.View.AddManuallyFragment"
+        android:label="fragment_add_manually"
+        tools:layout="@layout/fragment_add_manually">
+        <action
+            android:id="@+id/action_addManuallyFragment_to_userMRZFragment"
+            app:destination="@id/userMRZFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/selectOrAddPassportFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+
 </navigation>

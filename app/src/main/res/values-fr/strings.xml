@@ -54,5 +54,7 @@
     <string name="tn">Taux négatif réel</string>
     <string name="fp">Taux de faux positifs</string>
     <string name="fn">Taux de faux négatifs</string>
+    <string name="scanning">Scanning</string>
+    <string name="manual">Manual</string>
 
 </resources>

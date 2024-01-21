@@ -54,4 +54,6 @@
     <string name="tn">Gerçek Negatif Oranı</string>
     <string name="fp">Yanlış Pozitif Oranı</string>
     <string name="fn">Yanlış Negatif Oranı</string>
+    <string name="scanning">Scanning</string>
+    <string name="manual">Manual</string>
 </resources>
