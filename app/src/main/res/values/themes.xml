@@ -33,4 +33,6 @@
         <item name="android:spacing">4dp</item>
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
+
+
 </resources>

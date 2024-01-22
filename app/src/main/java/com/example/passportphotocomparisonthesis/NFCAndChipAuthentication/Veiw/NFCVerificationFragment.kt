@@ -15,6 +15,7 @@ import android.nfc.tech.IsoDep
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -176,6 +177,8 @@ class NFCVerificationFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        Log.d("NFC", "Inside onResume")
+
         val adapter = NfcAdapter.getDefaultAdapter(context)
         if (adapter != null) {
             val intent = Intent(context, context?.javaClass)

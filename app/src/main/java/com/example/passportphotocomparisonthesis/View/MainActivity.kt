@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
         // Load the user's language preference
         val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
         val defaultLanguage = Locale.getDefault().language
-        val savedLanguage = sharedPref.getString(getString(R.string.saved_language_key), defaultLanguage)
+        val savedLanguage =
+            sharedPref.getString(getString(R.string.saved_language_key), defaultLanguage)
 
         // Update the locale
         if (savedLanguage != null) {
@@ -48,6 +50,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setupWithNavController(navController)
 
+        // Hide BottomNavigationView for certain fragments
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+//                R.id.splashFragment, R.id.onboardingFragment -> binding.bottomNavigationView.visibility =
+//                    View.GONE
+                R.id.onboardingFragment -> binding.bottomNavigationView.visibility =
+                    View.GONE
+                else -> binding.bottomNavigationView.visibility = View.VISIBLE
+            }
+        }
     }
 
 
@@ -62,10 +74,40 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         Log.d("NFC", "onNewIntent: ${navHostFragment.childFragmentManager.fragments.size}")
 
+
         val currentFragment = navHostFragment.childFragmentManager.fragments[0]
-        if (currentFragment is NFCVerificationFragment) {
-            currentFragment.onNewIntent(intent, this)
+        Log.d("NFC", "which fragment: ${currentFragment}")
+        Log.d("NFC", "which fragment: ${supportFragmentManager}")
+
+//        if (currentFragment is NFCVerificationFragment) {
+//            currentFragment.onNewIntent(intent, this)
+//        }
+
+        //TODO: This introduces new bugs
+
+        for (fragment in navHostFragment.childFragmentManager.fragments) {
+            Log.d("NFC", "list of for fragments: ${fragment}")
+
+            // Replace 'QueryFragmentNavHostContainer' with the actual class name of your fragment
+            if (fragment is QueryFragmentNavHostContainer) {
+                for (childFragment in fragment.childFragmentManager.fragments) {
+                    Log.d("NFC", "list of child fragments: ${childFragment}")
+
+                    if (childFragment is NavHostFragment) {
+                        for (grandChildFragment in childFragment.childFragmentManager.fragments) {
+                            Log.d("NFC", "list of grandchild fragments: ${grandChildFragment}")
+
+                            if (grandChildFragment is NFCVerificationFragment) {
+                                Log.d("NFC", "NFCVerificationFragment is active")
+                                grandChildFragment.onNewIntent(intent, this)
+                                break
+                            }
+                        }
+                    }
+                }
+            }
         }
+
     }
 
 }
