@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.fragmentContainerView)
 
+
         binding.bottomNavigationView.setupWithNavController(navController)
 
         // Hide BottomNavigationView for certain fragments
