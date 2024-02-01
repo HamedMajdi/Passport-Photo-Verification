@@ -1,5 +1,3 @@
-Your app sounds very interesting and useful. I can help you write a very complete README for your GitHub project, based on some best practices and examples I found on the web¹²³. Here is a possible README template for your app:
-
 # ID/Passport Photo Recognition App
 
 This app uses **tflite** for photo recognition of the image from ID/Passport and comparing it with user selfie. It also allows the user to read the **NFC data** from the document, save it inside the database, and then take a picture. After that, the user can compare his face with the image of the document with the **FaceNet** and **MobileFaceNet** models that were developed on **python** and **tensorflow**, and then optimized to use on **android** and **tflite**.
