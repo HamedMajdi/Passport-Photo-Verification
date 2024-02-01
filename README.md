@@ -15,9 +15,8 @@ This app uses **tflite** for photo recognition of the image from ID/Passport and
 To install and run the app, follow these steps:
 
 - Clone this repository:
-
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/HamedMajdi/Passport-Photo-Verification.git
 cd your-repo-name
 ```
 
