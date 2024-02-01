@@ -17,7 +17,7 @@ To install and run the app, follow these steps:
 - Clone this repository:
 ```bash
 git clone https://github.com/HamedMajdi/Passport-Photo-Verification.git
-cd your-repo-name
+cd Passport-Photo-Verification
 ```
 
 - Open the project in **Android Studio** and sync the Gradle files.
