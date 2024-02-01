@@ -9,11 +9,6 @@ This app uses **tflite** for photo recognition of the image from ID/Passport and
 - Capture a selfie of the user and compare it with the image of the document using **FaceNet** and **MobileFaceNet** models for **face recognition** and **verification**.
 - Display the results of the comparison and the confidence score using **Material Design** components.
 
-## Demo
-
-Here are some screenshots and GIFs of the app in action:
-
-<!-- Add your screenshots and GIFs here -->
 
 ## Installation
 
