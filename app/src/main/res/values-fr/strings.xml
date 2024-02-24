@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Comparaison de photos de passeport (Thèse)</string>
+    <string name="app_name">AI TravelDoc</string>
     <!-- TODO: Supprimez ou modifiez ce texte de substitution -->
     <string name="hello_blank_fragment">Bonjour fragment vide</string>
     <string name="label_verify_passport_id_card">Vérifier</string>

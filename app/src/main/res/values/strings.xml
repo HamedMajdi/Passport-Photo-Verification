@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Document Face Verification</string>
+    <string name="app_name">AI TravelDoc</string>
 
     <string name="saved_language_key" translatable="false">SAVED_LANGUAGE</string>
     <string name="saved_dark_mode_key" translatable="false">SAVED_DARK_MODE</string>

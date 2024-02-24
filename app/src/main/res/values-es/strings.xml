@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Comparación de fotos de pasaportes (Tesis)</string>
+    <string name="app_name">AI TravelDoc</string>
     <!-- TODO: Eliminar o cambiar este texto de marcador de posición -->
     <string name="hello_blank_fragment">Hola fragmento en blanco</string>
     <string name="label_verify_passport_id_card">Verificar</string>

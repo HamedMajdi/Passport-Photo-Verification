@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Pasaport Fotoğraf Karşılaştırması (Tez)</string>
+    <string name="app_name">AI TravelDoc</string>
     <!-- TODO: Bu yer tutucu metni kaldırın veya değiştirin -->
     <string name="hello_blank_fragment">Merhaba boş parça</string>
     <string name="label_verify_passport_id_card">Doğrula</string>
