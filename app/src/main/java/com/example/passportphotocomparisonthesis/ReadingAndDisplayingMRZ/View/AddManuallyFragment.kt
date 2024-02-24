@@ -28,6 +28,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
+
 class AddManuallyFragment : Fragment() {
 
     //TODO: Extract the methods, and use Views Util for spinner and other data
@@ -49,6 +50,7 @@ class AddManuallyFragment : Fragment() {
     @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         loadCountryTypeSpinner()
         loadDocumentTypeSpinner()
@@ -156,6 +158,9 @@ class AddManuallyFragment : Fragment() {
     }
 
 
+
+
+    // this method should be called only after checking if the editText is not null or blank
     private fun checkDocumentNumberDigitCountValidity(): Boolean {
         return !(binding.editTextDocumentNumber.text.isNullOrBlank() || binding.editTextDocumentNumber.length() != 9)
     }

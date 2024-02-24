@@ -14,6 +14,7 @@ import com.example.passportphotocomparisonthesis.databinding.FragmentSettingsBin
 import java.util.Locale
 
 
+// a fragment for the settings page
 class SettingsFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
